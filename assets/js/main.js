@@ -1,4 +1,6 @@
-/* ── Datos comerciales ─────────────────────────────────────── */
+document.documentElement.classList.add('js');
+
+    /* ── Datos comerciales ─────────────────────────────────────── */
     const WHATSAPP = "5493764144012";            // wa.me usa 549 + número
     const WHATSAPP_LABEL = "+54 9 3764 144012"; // texto visible
     const EMAIL = "brooposadas@gmail.com";
@@ -81,16 +83,21 @@
         });
     });
 
-    /* ── Animaciones de aparición ───────────────────────────────── */
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                io.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    /* ── Animaciones de aparición (con respaldo) ───────────────── */
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => io.observe(el));
+    } else {
+        revealEls.forEach(el => el.classList.add('visible'));
+    }
 
     /* ── Formulario: compone WhatsApp o mailto ──────────────────── */
     const form = document.getElementById('contactForm');
