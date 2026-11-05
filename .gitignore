@@ -1,0 +1,18 @@
+# ─────────────────────────────────────────────────────────────
+# Sólo se publica el sitio web (index.html + assets/img).
+# Los documentos internos y los originales sin optimizar NO se suben.
+# ─────────────────────────────────────────────────────────────
+
+# Documentos de trabajo (internos / de marketing) — no publicar
+*.md
+!README.md
+
+# Imágenes originales en la raíz (ya optimizadas en assets/img)
+/*.png
+
+# Modelo de ejemplo previo
+/deepseek_html_*.html
+
+# Sistema
+Thumbs.db
+.DS_Store

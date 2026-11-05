@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GC de ìDOC · Sistema de gestión comercial sin mensualidad</title>
+<meta name="description" content="Sistema de gestión para comercios y servicio técnico. Software propio con datos cifrados en tu equipo, app móvil y pago único.">
+<meta name="keywords" content="sistema de gestión comercial, punto de venta sin mensualidad, software para kioscos, software para servicio técnico, control de stock, sistema de ventas Windows y Android">
+<meta name="author" content="ìDOC">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="GC de ìDOC · Tu negocio. Tus datos. En tu equipo.">
+<meta property="og:description" content="Sistema de gestión comercial propio: datos cifrados en tu equipo, app móvil y pago único. Sin mensualidad, sin nube obligatoria.">
+<meta property="og:image" content="assets/img/emblema-gc.png">
+
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  DATOS COMERCIALES (ya configurados)
+  ────────────────────────────────────────────────────────────────
+  WhatsApp  : +54 9 3764 144012  (wa.me/5493764144012)
+  Correo    : brooposadas@gmail.com
+  Zona      : Todo Misiones · equipo distribuido en todo el país
+              (asistencia remota y presencial).
+  Redes     : Facebook · Instagram · TikTok  → completar las URLs
+              de cada perfil en el objeto SOCIAL (fin del archivo).
+  ────────────────────────────────────────────────────────────────
+  Pendiente: precios, política de soporte y demás ítems [###]
+  señalados en los documentos.
+  ════════════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --obsidiana: #07070b;
+        --obsidiana-2: #0d0d13;
+        --card: rgba(20, 20, 27, 0.72);
+        --card-2: rgba(28, 28, 37, 0.9);
+        --dorado: #ffb100;
+        --dorado-2: #ffc233;
+        --ambar: #ff8c00;
+        --plata: #c7c9d1;
+        --plata-mut: #9aa0ad;
+        --azul: #4a7dff;
+        --texto: #f4f4f5;
+        --texto-mut: #a1a1aa;
+        --borde: rgba(255, 255, 255, 0.08);
+        --borde-dorado: rgba(255, 177, 0, 0.3);
+        --glow: rgba(255, 177, 0, 0.18);
+        --trans: all .3s cubic-bezier(.25,.8,.25,1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        background: var(--obsidiana);
+        color: var(--texto);
+        line-height: 1.65;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        background-image:
+            radial-gradient(circle at 12% 8%, rgba(255,177,0,.05), transparent 45%),
+            radial-gradient(circle at 88% 42%, rgba(74,125,255,.06), transparent 48%),
+            radial-gradient(circle at 50% 110%, rgba(255,177,0,.04), transparent 55%);
+    }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    section { scroll-margin-top: 84px; }
+
+    .container { width: 92%; max-width: 1180px; margin: 0 auto; }
+    .section { padding: 96px 0; }
+    .section--tint { background: linear-gradient(180deg, transparent, rgba(255,177,0,.025), transparent); }
+
+    .sec-head { text-align: center; max-width: 760px; margin: 0 auto 60px; }
+    .sec-eyebrow {
+        display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .18em;
+        text-transform: uppercase; color: var(--dorado); margin-bottom: 14px;
+    }
+    .sec-head h2 {
+        font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+        background: linear-gradient(to right, #fff, var(--dorado));
+        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .sec-head p { color: var(--texto-mut); font-size: 1.12rem; }
+
+    /* Botones */
+    .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 1rem;
+        cursor: pointer; transition: var(--trans); border: 1px solid transparent; white-space: nowrap;
+    }
+    .btn--dorado {
+        background: linear-gradient(135deg, var(--dorado), var(--ambar));
+        color: #100c00; box-shadow: 0 6px 22px var(--glow);
+    }
+    .btn--dorado:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,177,0,.4); }
+    .btn--ghost { background: transparent; color: var(--texto); border-color: var(--borde); backdrop-filter: blur(4px); }
+    .btn--ghost:hover { border-color: var(--dorado); color: var(--dorado); background: rgba(255,177,0,.05); }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* Header */
+    header {
+        position: fixed; inset: 0 0 auto 0; z-index: 1000;
+        background: rgba(7,7,11,.82); backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--borde); transition: var(--trans);
+    }
+    header.scrolled { background: rgba(7,7,11,.96); box-shadow: 0 6px 24px rgba(0,0,0,.5); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { height: 34px; width: auto; }
+    .brand .brand-txt { display: flex; flex-direction: column; line-height: 1.05; }
+    .brand .brand-txt b { font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; }
+    .brand .brand-txt span { font-size: .66rem; color: var(--texto-mut); letter-spacing: .08em; text-transform: uppercase; }
+
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: .95rem; font-weight: 500; color: var(--texto-mut); transition: var(--trans); position: relative; }
+    .nav-links a:hover { color: var(--dorado); }
+    .nav-links a::after {
+        content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px;
+        background: var(--dorado); transition: var(--trans);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .burger { display: none; background: none; border: 1px solid var(--borde); color: var(--texto);
+        width: 44px; height: 44px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; }
+
+    .mobile-menu { display: none; flex-direction: column; gap: 4px; padding: 14px 0 22px; border-top: 1px solid var(--borde); }
+    .mobile-menu a { padding: 12px 4px; color: var(--texto-mut); font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.04); }
+    .mobile-menu a:hover { color: var(--dorado); }
+    .mobile-menu.open { display: flex; }
+
+    /* Hero */
+    .hero { padding: 168px 0 72px; position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+    .hero-eyebrow {
+        display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 50px;
+        background: rgba(255,177,0,.1); border: 1px solid rgba(255,177,0,.22);
+        color: var(--dorado); font-size: .82rem; font-weight: 600; margin-bottom: 22px;
+    }
+    .hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dorado); box-shadow: 0 0 12px var(--dorado); }
+    .hero h1 { font-size: clamp(2.4rem, 5.4vw, 3.9rem); font-weight: 800; line-height: 1.06; margin-bottom: 20px; letter-spacing: -.02em; }
+    .hero h1 .accent { color: var(--dorado); }
+    .hero p.lead { font-size: 1.18rem; color: var(--texto-mut); max-width: 92%; margin-bottom: 34px; }
+    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+    .hero-proof { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 34px; }
+    .hero-proof .proof { display: flex; align-items: center; gap: 9px; font-size: .86rem; color: var(--plata-mut); }
+    .hero-proof .proof svg { width: 17px; height: 17px; color: var(--dorado); flex: none; }
+
+    /* Composición visual del hero */
+    .hero-visual { position: relative; display: flex; justify-content: center; }
+    .hero-visual::before {
+        content: ''; position: absolute; width: 82%; height: 82%; top: 10%;
+        background: radial-gradient(circle, var(--glow), transparent 68%); filter: blur(48px); z-index: 0;
+    }
+    .device-window {
+        position: relative; z-index: 2; width: 100%; max-width: 520px; border-radius: 16px; overflow: hidden;
+        background: #0c0c12; border: 1px solid var(--borde); box-shadow: 0 30px 70px rgba(0,0,0,.55);
+    }
+    .device-window .bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: #101017; border-bottom: 1px solid var(--borde); }
+    .device-window .bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+    .device-window .bar i:nth-child(1) { background: #ff5f57; }
+    .device-window .bar i:nth-child(2) { background: #febc2e; }
+    .device-window .bar i:nth-child(3) { background: #28c840; }
+    .device-window .bar span { margin-left: 10px; font-size: .72rem; color: var(--texto-mut); }
+    .device-window .screen { background: #f6f6f6; }
+    .device-window .screen img { width: 100%; height: auto; }
+
+    .floating-phone {
+        position: absolute; z-index: 3; right: -14px; bottom: -26px; width: 158px;
+        border-radius: 26px; overflow: hidden; border: 1px solid var(--borde);
+        background: #000; box-shadow: 0 24px 50px rgba(0,0,0,.6); transform: rotate(2deg);
+    }
+    .floating-phone img { width: 100%; height: auto; }
+    .floating-badge {
+        position: absolute; z-index: 4; top: -16px; left: -16px; width: 112px;
+        filter: drop-shadow(0 10px 24px rgba(0,0,0,.6));
+    }
+
+    /* Pilares */
+    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 34px; }
+    .pillar {
+        background: var(--card); backdrop-filter: blur(14px); border: 1px solid var(--borde);
+        border-radius: 14px; padding: 28px 22px; text-align: center; transition: var(--trans);
+    }
+    .pillar:hover { transform: translateY(-5px); border-color: var(--borde-dorado); background: var(--card-2); }
+    .pillar .ico {
+        width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 14px; display: grid; place-items: center;
+        background: rgba(255,177,0,.1); border: 1px solid rgba(255,177,0,.2); color: var(--dorado);
+    }
+    .pillar .ico svg { width: 26px; height: 26px; }
+    .pillar h3 { color: var(--dorado); font-size: 1.12rem; margin-bottom: 8px; }
+    .pillar p { font-size: .88rem; color: var(--texto-mut); }
+
+    /* Por qué ìDOC */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .why-brand img { width: 100%; max-width: 460px; margin: 0 auto; filter: drop-shadow(0 18px 40px rgba(0,0,0,.55)); }
+    .why-list { display: grid; gap: 16px; }
+    .why-item {
+        display: flex; gap: 16px; padding: 20px; border-radius: 14px; background: var(--card);
+        border: 1px solid var(--borde); transition: var(--trans);
+    }
+    .why-item:hover { border-color: var(--borde-dorado); }
+    .why-item .n { flex: none; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
+        background: rgba(255,177,0,.12); color: var(--dorado); font-weight: 700; }
+    .why-item h4 { font-size: 1.05rem; margin-bottom: 4px; }
+    .why-item p { color: var(--texto-mut); font-size: .93rem; }
+
+    /* Soluciones */
+    .sol-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .sol-card {
+        background: var(--card); border: 1px solid var(--borde); border-radius: 18px; overflow: hidden;
+        display: flex; flex-direction: column; transition: var(--trans);
+    }
+    .sol-card:hover { border-color: var(--borde-dorado); transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+    .sol-media { background: #0c0c12; border-bottom: 1px solid var(--borde); position: relative; }
+    .sol-media img { width: 100%; height: 210px; object-fit: cover; object-position: top; }
+    .sol-media.phone { display: flex; justify-content: center; padding-top: 16px; }
+    .sol-media.phone img { width: auto; height: 290px; object-fit: contain; object-position: center; }
+    .sol-media .tag { position: absolute; top: 12px; left: 12px; z-index: 2; }
+    .sol-body { padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
+    .sol-body h3 { font-size: 1.4rem; }
+    .sol-body .sub { color: var(--plata-mut); font-size: .95rem; }
+    .sol-body ul { display: grid; gap: 8px; }
+    .sol-body ul li { display: flex; align-items: flex-start; gap: 9px; color: var(--texto-mut); font-size: .9rem; }
+    .sol-body ul li::before { content: '✓'; color: var(--dorado); font-weight: 700; flex: none; }
+    .tag {
+        display: inline-block; padding: 5px 12px; border-radius: 50px; font-size: .7rem; font-weight: 600;
+        letter-spacing: .05em; background: rgba(7,7,11,.8); color: var(--dorado); border: 1px solid var(--borde-dorado);
+    }
+
+    .callout {
+        margin-top: 30px; padding: 26px 30px; border-radius: 16px; text-align: center;
+        background: rgba(255,177,0,.06); border: 1px solid rgba(255,177,0,.22);
+    }
+    .callout p { font-size: 1.08rem; color: var(--texto); }
+    .callout strong { color: var(--dorado); }
+
+    /* Seguridad */
+    .sec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .sec-card {
+        background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 26px; transition: var(--trans);
+    }
+    .sec-card:hover { border-color: var(--borde-dorado); background: var(--card-2); }
+    .sec-card .q { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; }
+    .sec-card .q .ico { flex: none; width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+        background: rgba(255,177,0,.12); color: var(--dorado); }
+    .sec-card .q .ico svg { width: 18px; height: 18px; }
+    .sec-card .ans { color: var(--texto-mut); font-size: .9rem; margin-bottom: 14px; }
+    .sec-card .ans strong { color: var(--texto); font-weight: 600; }
+    .sec-card .proof {
+        background: rgba(255,177,0,.05); border-left: 3px solid var(--dorado); padding: 10px 14px;
+        font-size: .84rem; color: var(--texto); border-radius: 0 8px 8px 0;
+    }
+    .sec-card .proof b { color: var(--dorado); font-weight: 600; }
+    .sec-grid .span-2 { grid-column: span 2; }
+    .sec-grid .span-3 { grid-column: span 3; }
+
+    .privacy {
+        margin-top: 26px; padding: 34px 34px; border-radius: 18px; background: var(--card);
+        border: 1px solid var(--borde); text-align: center;
+    }
+    .privacy h3 { color: var(--dorado); margin-bottom: 14px; font-size: 1.3rem; }
+    .privacy p { color: var(--texto-mut); max-width: 820px; margin: 0 auto; font-size: 1.06rem; }
+
+    /* Tecnología */
+    .tech { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 16px;
+        overflow: hidden; border: 1px solid var(--borde); }
+    .tech th, .tech td { padding: 20px 24px; text-align: left; border-bottom: 1px solid var(--borde); vertical-align: top; }
+    .tech th { background: rgba(255,177,0,.1); color: var(--dorado); font-weight: 600; width: 26%; white-space: nowrap; }
+    .tech td { color: var(--texto-mut); }
+    .tech tr:last-child th, .tech tr:last-child td { border-bottom: none; }
+
+    /* Cómo funciona */
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; counter-reset: step; }
+    .step { background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 26px 20px; position: relative; transition: var(--trans); }
+    .step:hover { border-color: var(--borde-dorado); transform: translateY(-4px); }
+    .step .num {
+        width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 14px;
+        background: linear-gradient(135deg, var(--dorado), var(--ambar)); color: #100c00; font-weight: 800; font-size: 1.1rem;
+    }
+    .step h4 { font-size: 1rem; margin-bottom: 8px; }
+    .step p { color: var(--texto-mut); font-size: .88rem; }
+
+    /* Galería */
+    .gallery-desktop { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .shot { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--borde); background: #0c0c12; transition: var(--trans); }
+    .shot:hover { transform: translateY(-4px); border-color: var(--borde-dorado); }
+    .shot img { width: 100%; height: auto; display: block; }
+    .gallery-mobile { display: flex; gap: 16px; overflow-x: auto; padding: 6px 2px 20px; scrollbar-width: thin; scrollbar-color: var(--dorado) transparent; }
+    .gallery-mobile .shot { flex: none; width: 168px; }
+    .gallery-mobile .shot img { width: 100%; height: auto; }
+
+    /* Planes */
+    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
+    .price-card {
+        background: var(--card); border: 1px solid var(--borde); border-radius: 18px; padding: 36px 30px;
+        display: flex; flex-direction: column; text-align: center; position: relative; transition: var(--trans);
+    }
+    .price-card.featured { border-color: var(--dorado); background: linear-gradient(180deg, rgba(255,177,0,.06), var(--card) 55%); }
+    .price-card.featured .ribbon {
+        position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--dorado);
+        color: #100c00; padding: 5px 16px; border-radius: 20px; font-weight: 700; font-size: .74rem; letter-spacing: .04em;
+    }
+    .price-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
+    .price-card .edition { color: var(--plata-mut); font-size: .86rem; margin-bottom: 20px; }
+    .price-card .price { font-size: 2rem; font-weight: 800; color: var(--dorado); margin-bottom: 4px; }
+    .price-card .price-note { font-size: .82rem; color: var(--texto-mut); margin-bottom: 24px; }
+    .price-card ul { text-align: left; margin-bottom: 30px; display: grid; gap: 12px; flex: 1; }
+    .price-card ul li { display: flex; align-items: flex-start; gap: 10px; color: var(--texto-mut); font-size: .9rem; }
+    .price-card ul li::before { content: '✓'; color: var(--dorado); font-weight: 700; flex: none; }
+    .price-foot { text-align: center; color: var(--texto-mut); font-size: .84rem; margin-top: 26px; }
+
+    /* FAQ */
+    .faq { max-width: 820px; margin: 0 auto; }
+    .faq-item { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
+    .faq-item summary {
+        padding: 20px 24px; font-weight: 600; cursor: pointer; list-style: none;
+        display: flex; justify-content: space-between; align-items: center; transition: var(--trans);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; color: var(--dorado); font-size: 1.6rem; line-height: 1; transition: var(--trans); }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { color: var(--dorado); }
+    .faq-content { padding: 0 24px 22px; color: var(--texto-mut); }
+
+    /* Contacto */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .form { display: grid; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field label { font-size: .85rem; font-weight: 500; color: var(--plata); }
+    .field input, .field select, .field textarea {
+        background: var(--card); border: 1px solid var(--borde); border-radius: 10px; padding: 13px 15px;
+        color: var(--texto); font-family: inherit; font-size: .95rem; transition: var(--trans); width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--dorado); }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .form-note { font-size: .8rem; color: var(--texto-mut); }
+
+    .contact-side { display: grid; gap: 16px; }
+    .contact-card { background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
+    .contact-card .ico { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+        background: rgba(255,177,0,.12); color: var(--dorado); }
+    .contact-card .ico svg { width: 22px; height: 22px; }
+    .contact-card h4 { font-size: .95rem; margin-bottom: 3px; }
+    .contact-card p { color: var(--texto-mut); font-size: .9rem; word-break: break-word; }
+    .contact-card a { color: var(--dorado); }
+    .contact-card a:hover { text-decoration: underline; }
+    .social-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    .social-link { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center;
+        background: rgba(255,177,0,.1); border: 1px solid var(--borde); color: var(--texto-mut); transition: var(--trans); }
+    .social-link:hover { color: var(--dorado); border-color: var(--borde-dorado); transform: translateY(-2px); }
+    .social-link svg { width: 20px; height: 20px; }
+
+    /* Footer */
+    footer { background: #000; border-top: 1px solid var(--borde); padding: 60px 0 28px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+    .footer-brand img { height: 40px; margin-bottom: 18px; }
+    .footer-brand p { color: var(--texto-mut); max-width: 320px; font-size: .9rem; }
+    .footer-links h4 { margin-bottom: 16px; font-size: 1rem; }
+    .footer-links ul li { margin-bottom: 10px; }
+    .footer-links ul li a { color: var(--texto-mut); transition: var(--trans); font-size: .9rem; }
+    .footer-links ul li a:hover { color: var(--dorado); }
+    .footer-bottom { text-align: center; padding-top: 26px; border-top: 1px solid var(--borde); color: var(--texto-mut); font-size: .84rem; }
+    .footer-bottom .motto { color: var(--dorado); font-size: .9rem; margin-top: 8px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+        .hero-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+        .hero { padding-top: 140px; }
+        .hero p.lead { max-width: 100%; }
+        .why-brand { order: -1; }
+        .pillars { grid-template-columns: repeat(2, 1fr); }
+        .sec-grid { grid-template-columns: repeat(2, 1fr); }
+        .sec-grid .span-2, .sec-grid .span-3 { grid-column: span 2; }
+        .steps { grid-template-columns: repeat(2, 1fr); }
+        .steps .step:last-child { grid-column: span 2; }
+        .gallery-desktop { grid-template-columns: repeat(2, 1fr); }
+        .price-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+        .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+    @media (max-width: 768px) {
+        .nav-links, .nav-cta .btn { display: none; }
+        .burger { display: block; }
+        .hero h1 { font-size: 2.4rem; }
+        .hero-visual { margin-top: 10px; }
+        .floating-phone { width: 126px; right: -6px; }
+        .floating-badge { width: 88px; }
+        .pillars { grid-template-columns: 1fr; }
+        .sol-grid, .sec-grid, .gallery-desktop { grid-template-columns: 1fr; }
+        .sec-grid .span-2, .sec-grid .span-3 { grid-column: span 1; }
+        .steps { grid-template-columns: 1fr; }
+        .steps .step:last-child { grid-column: span 1; }
+        .form-row { grid-template-columns: 1fr; }
+        .tech th, .tech td { display: block; width: 100%; }
+        .tech th { padding-bottom: 6px; }
+        .tech td { padding-top: 6px; }
+        .tech tr { display: block; border-bottom: 1px solid var(--borde); }
+        .section { padding: 70px 0; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header id="header">
+    <div class="container nav">
+        <a href="#inicio" class="brand" aria-label="ìDOC · GC">
+            <img src="assets/img/logo-idoc-nav.png" alt="ìDOC">
+            <span class="brand-txt">
+                <b>ìDOC</b>
+                <span>GC · Gestión Comercial</span>
+            </span>
+        </a>
+        <nav class="nav-links">
+            <a href="#soluciones">Soluciones</a>
+            <a href="#seguridad">Seguridad</a>
+            <a href="#tecnologia">Tecnología</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#planes">Planes</a>
+            <a href="#faq">Preguntas</a>
+        </nav>
+        <div class="nav-cta">
+            <a href="#contacto" class="btn btn--dorado">Hablar con ìDOC</a>
+            <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
+        </div>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+        <a href="#soluciones">Soluciones</a>
+        <a href="#seguridad">Seguridad</a>
+        <a href="#tecnologia">Tecnología</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#planes">Planes</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+    <div class="container hero-grid">
+        <div class="hero-text reveal">
+            <div class="hero-eyebrow"><span class="dot"></span> ìDOC · Infraestructura Digital de Operación Comercial</div>
+            <h1>Tu negocio. Tus datos. <span class="accent">En tu equipo.</span></h1>
+            <p class="lead">GC es el sistema de gestión comercial desarrollado por ìDOC. Se instala en tu computadora, se maneja desde tu celular y lo pagás una sola vez.</p>
+            <div class="hero-actions">
+                <a href="#como-funciona" class="btn btn--dorado">
+                    Ver cómo funciona
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="#contacto" class="btn btn--ghost">Hablar con ìDOC</a>
+            </div>
+            <div class="hero-proof">
+                <span class="proof">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                    Datos cifrados AES-256
+                </span>
+                <span class="proof">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                    Sin mensualidad
+                </span>
+                <span class="proof">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                    Software propio
+                </span>
+            </div>
+        </div>
+        <div class="hero-visual reveal">
+            <div class="device-window">
+                <div class="bar"><i></i><i></i><i></i><span>GC · Sistema de gestión</span></div>
+                <div class="screen"><img src="assets/img/gc-escritorio-1.png" alt="Pantalla del sistema GC de ìDOC"></div>
+            </div>
+            <div class="floating-phone"><img src="assets/img/gc-app-1.png" alt="App GC Móvil"></div>
+            <img class="floating-badge" src="assets/img/emblema-gc.png" alt="Emblema GC">
+        </div>
+    </div>
+
+    <!-- Pilares -->
+    <div class="container">
+        <div class="pillars reveal">
+            <div class="pillar">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
+                <h3>Gestión</h3>
+                <p>Caja, ventas, stock, clientes, proveedores y servicio técnico en un solo sistema.</p>
+            </div>
+            <div class="pillar">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <h3>Seguridad</h3>
+                <p>Datos cifrados, accesos por usuario y registro de cada acción.</p>
+            </div>
+            <div class="pillar">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 018-8 8 8 0 018 8"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/><circle cx="12" cy="12" r="3"/></svg></div>
+                <h3>Conexión</h3>
+                <p>PC, terminales y celular conectados a un único equipo principal.</p>
+            </div>
+            <div class="pillar">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l5-5 4 4 5-6 4 4"/><path d="M3 21h18"/></svg></div>
+                <h3>Crecimiento</h3>
+                <p>Un sistema que se adapta a 22 rubros y crece con tu comercio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Por qué ìDOC -->
+<section class="section section--tint" id="por-que">
+    <div class="container why-grid">
+        <div class="why-brand reveal">
+            <img src="assets/img/logo-idoc-futurista.png" alt="Logotipo ìDOC">
+        </div>
+        <div>
+            <div class="sec-head" style="text-align:left; margin-bottom:32px;">
+                <span class="sec-eyebrow">Por qué ìDOC</span>
+                <h2>La confianza no se declara, se demuestra.</h2>
+            </div>
+            <div class="why-list">
+                <div class="why-item reveal">
+                    <div class="n">01</div>
+                    <div><h4>Comprás una vez. Es tuyo.</h4><p>Sin cuota mensual. Pagás una sola vez por tu licencia.</p></div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="n">02</div>
+                    <div><h4>Tus datos no se alquilan.</h4><p>Viven en tu equipo, cifrados. No están en servidores de un tercero.</p></div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="n">03</div>
+                    <div><h4>Sin nube obligatoria, sin telemetría, sin inteligencia artificial que lea tu información.</h4></div>
+                </div>
+                <div class="why-item reveal">
+                    <div class="n">04</div>
+                    <div><h4>Soporte para corregir errores incluido.</h4><p>Según nuestra política de soporte.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Soluciones -->
+<section class="section" id="soluciones">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Soluciones</span>
+            <h2>Un modelo para cada operación</h2>
+            <p>Elegí el que mejor se adapte a tu comercio. Todos comparten una misma regla: un solo equipo guarda la información.</p>
+        </div>
+
+        <div class="sol-grid">
+            <div class="sol-card reveal">
+                <div class="sol-media"><span class="tag">Windows + Android</span><img src="assets/img/gc-escritorio-2.png" alt="GC Comercios"></div>
+                <div class="sol-body">
+                    <h3>GC Comercios</h3>
+                    <p class="sub">Para kioscos, autoservicios, panaderías, ferreterías, farmacias, tiendas y más.</p>
+                    <ul>
+                        <li>Caja y ventas con código de barras</li>
+                        <li>Stock con alerta de mínimos</li>
+                        <li>Clientes y cuenta corriente</li>
+                        <li>Proveedores y estadísticas</li>
+                        <li>5 formatos de comprobante</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sol-card reveal">
+                <div class="sol-media"><span class="tag">Ventas + Taller</span><img src="assets/img/gc-escritorio-3.png" alt="GC Ventas y Servicio Técnico"></div>
+                <div class="sol-body">
+                    <h3>GC Ventas y Servicio Técnico</h3>
+                    <p class="sub">Todo lo anterior, más gestión de reparaciones.</p>
+                    <ul>
+                        <li>Órdenes de servicio con 4 etapas (ingreso, diagnóstico, reparación, entrega)</li>
+                        <li>Fotos de evidencia tomadas desde el celular y guardadas en la orden</li>
+                        <li>Trazabilidad completa de cada equipo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sol-card reveal">
+                <div class="sol-media"><span class="tag">Terminal adicional</span><img src="assets/img/gc-escritorio-4.png" alt="GC Solo Interfaz"></div>
+                <div class="sol-body">
+                    <h3>GC Solo Interfaz</h3>
+                    <p class="sub">Una terminal adicional para tu segunda caja o tu depósito.</p>
+                    <ul>
+                        <li>Trabaja conectada a tu equipo principal</li>
+                        <li>No guarda una base de datos propia</li>
+                        <li>Ideal para expandir tu local</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sol-card reveal">
+                <div class="sol-media phone"><span class="tag">App móvil</span><img src="assets/img/gc-app-2.png" alt="App GC Móvil"></div>
+                <div class="sol-body">
+                    <h3>App GC Móvil</h3>
+                    <p class="sub">Tu sistema en el bolsillo, para Android.</p>
+                    <ul>
+                        <li>Escaneá códigos, consultá stock y vendé</li>
+                        <li>Cargá fotos de evidencia</li>
+                        <li>Recibí alertas</li>
+                        <li>Bloqueo por huella digital</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="callout reveal">
+            <p><strong>Un dato que importa:</strong> todos los dispositivos ven y operan la información; <strong>un solo equipo la guarda</strong>. Eso evita duplicados y desorden.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Seguridad -->
+<section class="section section--tint" id="seguridad">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Seguridad</span>
+            <h2>Seguridad que podés comprobar</h2>
+            <p>No te pedimos que confíes. Te mostramos cómo comprobarlo.</p>
+        </div>
+
+        <div class="sec-grid">
+            <div class="sec-card reveal">
+                <div class="q"><span class="ico">🔒</span> ¿Pueden leer mis datos si copian el archivo?</div>
+                <p class="ans">La base se guarda <strong>cifrada (AES-256)</strong> con una clave ligada a tu equipo.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> abrí la carpeta de datos: verás contenido ilegible.</div>
+            </div>
+            <div class="sec-card reveal">
+                <div class="q"><span class="ico">📄</span> ¿Y si abren los CSV?</div>
+                <p class="ans">Los archivos internos también están <strong>cifrados</strong>.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> abrilos con el bloc de notas.</div>
+            </div>
+            <div class="sec-card reveal">
+                <div class="q"><span class="ico">🛡️</span> ¿Quién entra al sistema?</div>
+                <p class="ans">Usuarios con contraseña, <strong>roles y permisos por módulo</strong>.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> probá entrar con un usuario limitado.</div>
+            </div>
+            <div class="sec-card reveal">
+                <div class="q"><span class="ico">⛔</span> ¿Y si alguien prueba contraseñas?</div>
+                <p class="ans"><strong>Bloqueo automático</strong> tras 5 intentos fallidos y registro del evento.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> hacé la prueba en vivo.</div>
+            </div>
+            <div class="sec-card reveal">
+                <div class="q"><span class="ico">📝</span> ¿Cómo sé quién hizo cada cosa?</div>
+                <p class="ans"><strong>Registro de auditoría</strong> de cada operación.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> abrí el historial.</div>
+            </div>
+            <div class="sec-card reveal">
+                <div class="q"><span class="ico">🔑</span> ¿Se puede instalar sin permiso?</div>
+                <p class="ans">Cada instalación necesita <strong>código de instalación y clave firmada</strong>.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> intentá activar sin clave.</div>
+            </div>
+            <div class="sec-card span-3 reveal">
+                <div class="q"><span class="ico">📱</span> ¿Mi celular es un riesgo?</div>
+                <p class="ans"><strong>Bloqueo por huella</strong>, y la app no copia datos a la nube de Android.</p>
+                <div class="proof"><b>Cómo lo comprobás:</b> probá abrir la app sin huella.</div>
+            </div>
+        </div>
+
+        <div class="privacy reveal">
+            <h3>Privacidad y transparencia</h3>
+            <p>GC no usa inteligencia artificial en la nube. No envía tus datos a ìDOC ni a terceros. Las únicas conexiones externas son las que vos activás: WhatsApp (para enviar comprobantes) y Tailscale (red privada).</p>
+        </div>
+    </div>
+</section>
+
+<!-- Tecnología -->
+<section class="section" id="tecnologia">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Tecnología</span>
+            <h2>Software propio. No un sitio web disfrazado.</h2>
+            <p>GC no es una página web ni una plantilla. Es software nativo, desarrollado por ìDOC:</p>
+        </div>
+
+        <div class="reveal">
+            <table class="tech">
+                <tbody>
+                    <tr><th>Escritorio</th><td>C# sobre .NET, interfaz Windows Forms con motor gráfico propio.</td></tr>
+                    <tr><th>Datos</th><td>SQLite embebida con esquema propio y cifrado AES-256.</td></tr>
+                    <tr><th>Conexión interna</th><td>Servidor propio de sincronización con API REST y descubrimiento automático.</td></tr>
+                    <tr><th>Móvil</th><td>App nativa Android en Kotlin y Jetpack Compose (Material 3).</td></tr>
+                    <tr><th>Licencias</th><td>Instalador y generador de claves propios.</td></tr>
+                    <tr><th>Tamaño</th><td>Más de 19.500 líneas de C# y 22 módulos Kotlin.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Cómo funciona -->
+<section class="section section--tint" id="como-funciona">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Cómo funciona</span>
+            <h2>En marcha en 5 pasos</h2>
+        </div>
+
+        <div class="steps">
+            <div class="step reveal"><div class="num">1</div><h4>Contactás a ìDOC</h4><p>Y elegís el modelo que mejor se adapta a tu comercio.</p></div>
+            <div class="step reveal"><div class="num">2</div><h4>Instalamos GC</h4><p>En tu equipo principal, con la instalación incluida en los planes.</p></div>
+            <div class="step reveal"><div class="num">3</div><h4>Activás con tu clave</h4><p>Recibís tu código de instalación y activás el sistema.</p></div>
+            <div class="step reveal"><div class="num">4</div><h4>Configurás tu comercio</h4><p>Con un asistente: usuario propietario, datos del local, logo y rubro.</p></div>
+            <div class="step reveal"><div class="num">5</div><h4>Conectás tus dispositivos</h4><p>Celulares y terminales, con un código QR o la dirección del equipo principal.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Galería -->
+<section class="section" id="galeria">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Así se ve</span>
+            <h2>El sistema, en pantalla</h2>
+            <p>Capturas reales del software GC de ìDOC, en escritorio y en la app móvil.</p>
+        </div>
+
+        <div class="gallery-desktop reveal">
+            <div class="shot"><img src="assets/img/gc-escritorio-1.png" alt="Captura de GC"></div>
+            <div class="shot"><img src="assets/img/gc-escritorio-5.png" alt="Captura de GC"></div>
+            <div class="shot"><img src="assets/img/gc-escritorio-6.png" alt="Captura de GC"></div>
+        </div>
+
+        <div style="margin-top: 28px;">
+            <div class="gallery-mobile reveal">
+                <div class="shot"><img src="assets/img/gc-app-1.png" alt="App GC Móvil"></div>
+                <div class="shot"><img src="assets/img/gc-app-2.png" alt="App GC Móvil"></div>
+                <div class="shot"><img src="assets/img/gc-app-3.png" alt="App GC Móvil"></div>
+                <div class="shot"><img src="assets/img/gc-app-4.png" alt="App GC Móvil"></div>
+                <div class="shot"><img src="assets/img/gc-app-5.png" alt="App GC Móvil"></div>
+                <div class="shot"><img src="assets/img/gc-app-6.png" alt="App GC Móvil"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Planes -->
+<section class="section section--tint" id="planes">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Planes</span>
+            <h2>Comprás una vez. Es tuyo.</h2>
+            <p>Sin cuotas mensuales ni sorpresas. Elegí el plan que se adapte a tu comercio.</p>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card reveal">
+                <h3>GC Comercios</h3>
+                <div class="edition">Gestión para venta de mostrador</div>
+                <div class="price">Pago único</div>
+                <div class="price-note">Precio a confirmar</div>
+                <ul>
+                    <li>Caja y ventas POS con código de barras</li>
+                    <li>Stock con alerta de mínimos</li>
+                    <li>Clientes y cuenta corriente</li>
+                    <li>Proveedores y estadísticas</li>
+                    <li>5 formatos de comprobante</li>
+                </ul>
+                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar precio</a>
+            </div>
+
+            <div class="price-card featured reveal">
+                <span class="ribbon">Más elegido</span>
+                <h3>GC Ventas y Servicio Técnico</h3>
+                <div class="edition">Ventas + taller de reparaciones</div>
+                <div class="price">Pago único</div>
+                <div class="price-note">Precio a confirmar</div>
+                <ul>
+                    <li>Todo lo de GC Comercios</li>
+                    <li>Órdenes de servicio con 4 etapas</li>
+                    <li>Fotos de evidencia desde el celular</li>
+                    <li>Trazabilidad de cada equipo</li>
+                </ul>
+                <a href="#contacto" class="btn btn--dorado" style="width:100%;">Consultar precio</a>
+            </div>
+
+            <div class="price-card reveal">
+                <h3>GC Multi-terminal</h3>
+                <div class="edition">Interfaz + app móvil</div>
+                <div class="price">Pago único</div>
+                <div class="price-note">Precio a confirmar</div>
+                <ul>
+                    <li>Terminales adicionales (Solo Interfaz)</li>
+                    <li>App GC Móvil para Android</li>
+                    <li>Bloqueo por huella digital</li>
+                    <li>Un único almacén de datos</li>
+                </ul>
+                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar precio</a>
+            </div>
+        </div>
+
+        <p class="price-foot">Pago único por licencia. Precios, instalación, capacitación y condiciones de soporte se confirman con ìDOC al solicitar tu licencia.</p>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Preguntas frecuentes</span>
+            <h2>Lo que más nos preguntan</h2>
+        </div>
+
+        <div class="faq reveal">
+            <details class="faq-item">
+                <summary>¿Pago mensualidad?</summary>
+                <div class="faq-content">No. Es un pago único por tu licencia.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Qué pasa si hay un error?</summary>
+                <div class="faq-content">Lo corregimos sin costo, según nuestra política de soporte.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Mis datos están en la nube?</summary>
+                <div class="faq-content">No. Están en tu equipo, cifrados.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Necesito internet?</summary>
+                <div class="faq-content">La operación diaria es local; internet solo se usa para integraciones opcionales (como enviar comprobantes por WhatsApp o conectar el celular por red privada Tailscale).</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Puedo usarlo desde el celular fuera del local?</summary>
+                <div class="faq-content">Sí, mediante red privada Tailscale (opcional).</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Usa inteligencia artificial?</summary>
+                <div class="faq-content">No incorpora inteligencia artificial que lea o procese tu información.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Qué pasa si cambio de computadora?</summary>
+                <div class="faq-content">Hacés una copia cifrada del sistema y la restauramos con ìDOC.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Emiten factura electrónica ARCA?</summary>
+                <div class="faq-content">No en esta versión.</div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<!-- Contacto -->
+<section class="section section--tint" id="contacto">
+    <div class="container">
+        <div class="sec-head reveal">
+            <span class="sec-eyebrow">Contacto</span>
+            <h2>Hablemos de tu comercio</h2>
+            <p>Contanos tu rubro y te mostramos cómo funciona GC.</p>
+        </div>
+
+        <div class="contact-grid">
+            <form class="form reveal" id="contactForm" novalidate>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="f-nombre">Nombre</label>
+                        <input id="f-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="field">
+                        <label for="f-comercio">Comercio</label>
+                        <input id="f-comercio" name="comercio" type="text" placeholder="Nombre de tu comercio">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="field">
+                        <label for="f-rubro">Rubro</label>
+                        <input id="f-rubro" name="rubro" type="text" placeholder="Ej.: kiosco, ferretería, taller…">
+                    </div>
+                    <div class="field">
+                        <label for="f-modelo">Modelo de interés</label>
+                        <select id="f-modelo" name="modelo">
+                            <option value="">Elegí un modelo</option>
+                            <option>GC Comercios</option>
+                            <option>GC Ventas y Servicio Técnico</option>
+                            <option>GC Solo Interfaz</option>
+                            <option>App GC Móvil</option>
+                            <option>No estoy seguro / necesito asesoramiento</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="f-mensaje">Mensaje</label>
+                    <textarea id="f-mensaje" name="mensaje" placeholder="Contanos qué necesitás…"></textarea>
+                </div>
+                <button type="submit" class="btn btn--dorado" style="justify-self:start;">
+                    Enviar consulta
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+                <p class="form-note" id="formNote">Al enviar se abre tu aplicación de mensajería o correo con la consulta preparada.</p>
+            </form>
+
+            <div class="contact-side reveal">
+                <div class="contact-card">
+                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.5 0-2.9-.4-4.1-1L3 21l1.9-4.7A8.5 8.5 0 1121 11.5z"/></svg></div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p><a href="#" id="wa-link">+54 9 3764 144012</a></p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+                    <div>
+                        <h4>Correo</h4>
+                        <p><a href="#" id="mail-link">brooposadas@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+                    <div>
+                        <h4>Zona de atención</h4>
+                        <p id="zona-valor">Todo Misiones, Argentina</p>
+                        <p style="font-size:.84rem;">Equipo distribuido en todo el país: asistencia remota y presencial.</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></div>
+                    <div>
+                        <h4>Seguinos</h4>
+                        <div class="social-row" id="socialRow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="assets/img/logo-idoc-nav.png" alt="ìDOC">
+                <p>ìDOC · Infraestructura Digital de Operación Comercial.<br>Conectando tu negocio. Potenciando tu futuro.</p>
+                <div class="social-row" id="socialRowFooter"></div>
+            </div>
+            <div class="footer-links">
+                <h4>Producto</h4>
+                <ul>
+                    <li><a href="#soluciones">Soluciones</a></li>
+                    <li><a href="#seguridad">Seguridad</a></li>
+                    <li><a href="#tecnologia">Tecnología</a></li>
+                    <li><a href="#como-funciona">Cómo funciona</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="#contacto">Hablar con ìDOC</a></li>
+                    <li><a href="#planes">Planes</a></li>
+                    <li><a href="#faq">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ìDOC. Todos los derechos reservados. GC es un producto desarrollado por ìDOC.</p>
+            <p class="motto">La confianza no se declara, se demuestra.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    /* ── Datos comerciales ─────────────────────────────────────── */
+    const WHATSAPP = "5493764144012";            // wa.me usa 549 + número
+    const WHATSAPP_LABEL = "+54 9 3764 144012"; // texto visible
+    const EMAIL = "brooposadas@gmail.com";
+    const CIUDAD = "Todo Misiones, Argentina";
+    const SOCIAL = [
+        { name: 'Facebook',  url: '' /* TODO: completar URL del perfil */ },
+        { name: 'Instagram', url: '' /* TODO: completar URL del perfil */ },
+        { name: 'TikTok',    url: '' /* TODO: completar URL del perfil */ }
+    ];
+
+    /* Iconos SVG de redes sociales */
+    const ICONS = {
+        Facebook:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3V11H9v3h2.3v7h2.2z"/></svg>',
+        Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>',
+        TikTok:    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 4v2.6c-1.3 0-2.5-.4-3.5-1.1v5.7c0 3.4-2.4 5.8-5.6 5.8-2.8 0-5-2-5-4.9 0-3.2 2.5-5.4 5.7-5.2v2.7c-.4-.1-.8-.2-1.2-.2-1.5 0-2.5 1-2.5 2.5 0 1.4 1 2.4 2.5 2.4 1.5 0 2.6-1.1 2.6-2.8V3h4z"/></svg>'
+    };
+
+    function renderSocial(containerId) {
+        const box = document.getElementById(containerId);
+        if (!box) return;
+        box.innerHTML = SOCIAL.map(s => {
+            const icon = ICONS[s.name] || '';
+            if (!s.url) {
+                return '<span class="social-link" title="' + s.name + ' (completar URL)" aria-label="' + s.name + '">' + icon + '</span>';
+            }
+            return '<a class="social-link" href="' + s.url + '" target="_blank" rel="noopener" aria-label="' + s.name + '" title="' + s.name + '">' + icon + '</a>';
+        }).join('');
+    }
+
+    /* Rellenar los datos de contacto */
+    function initContact() {
+        const wa = document.getElementById('wa-link');
+        const mail = document.getElementById('mail-link');
+        const zona = document.getElementById('zona-valor');
+        if (wa) { wa.textContent = WHATSAPP_LABEL; wa.href = 'https://wa.me/' + WHATSAPP; }
+        if (mail) { mail.textContent = EMAIL; mail.href = 'mailto:' + EMAIL; }
+        if (zona && CIUDAD) zona.textContent = CIUDAD;
+        renderSocial('socialRow');
+        renderSocial('socialRowFooter');
+    }
+    initContact();
+
+    /* ── Menú móvil ─────────────────────────────────────────────── */
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('open');
+        burger.textContent = open ? '✕' : '☰';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        burger.textContent = '☰';
+    }));
+
+    /* ── Header con sombra al hacer scroll ──────────────────────── */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    /* ── Smooth scroll (respetando header fijo) ─────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function (e) {
+            const id = this.getAttribute('href');
+            if (id.length < 2) return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            const y = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        });
+    });
+
+    /* ── Animaciones de aparición ───────────────────────────────── */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ── Formulario: compone WhatsApp o mailto ──────────────────── */
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const nombre = document.getElementById('f-nombre').value.trim();
+        if (!nombre) {
+            document.getElementById('f-nombre').focus();
+            note.textContent = 'Por favor, escribí tu nombre para continuar.';
+            return;
+        }
+        const comercio = document.getElementById('f-comercio').value.trim();
+        const rubro = document.getElementById('f-rubro').value.trim();
+        const modelo = document.getElementById('f-modelo').value;
+        const mensaje = document.getElementById('f-mensaje').value.trim();
+
+        const texto = [
+            'Hola ìDOC 👋',
+            'Nombre: ' + nombre,
+            comercio ? 'Comercio: ' + comercio : '',
+            rubro ? 'Rubro: ' + rubro : '',
+            modelo ? 'Modelo de interés: ' + modelo : '',
+            mensaje ? 'Mensaje: ' + mensaje : ''
+        ].filter(Boolean).join('\n');
+
+        if (WHATSAPP) {
+            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank');
+        } else if (EMAIL) {
+            window.location.href = 'mailto:' + EMAIL + '?subject=' +
+                encodeURIComponent('Consulta GC · ' + nombre) + '&body=' + encodeURIComponent(texto);
+        } else {
+            note.textContent = 'Los datos de contacto aún no están configurados. Completalos en el bloque CONFIGURACIÓN del archivo index.html.';
+        }
+    });
+</script>
+</body>
+</html>
