@@ -51,7 +51,14 @@
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Windows, Android",
       "description": "Sistema de gestión comercial para comercios y servicio técnico. Datos cifrados en tu equipo, app móvil y pago único.",
-      "url": "https://rsbroo.github.io/idoc-gc/"
+      "url": "https://rsbroo.github.io/idoc-gc/",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "ARS",
+        "lowPrice": "98000",
+        "highPrice": "480000",
+        "offerCount": "7"
+      }
     },
     {
       "@type": "FAQPage",
@@ -76,9 +83,8 @@
               (asistencia remota y presencial).
   Redes     : Facebook · Instagram · TikTok  ✔ configuradas
               (objeto SOCIAL al final del archivo).
-  ────────────────────────────────────────────────────────────────
-  Pendiente: precios, política de soporte y demás ítems [###]
-  señalados en los documentos.
+  Precios   : de lanzamiento (vigentes hasta 500 clientes) — ver
+              sección "Planes".
   ════════════════════════════════════════════════════════════════
 -->
 
@@ -451,6 +457,19 @@
     .to-top.show { opacity: 1; pointer-events: auto; }
     .to-top:hover { color: var(--dorado); border-color: var(--borde-dorado); }
 
+    /* Planes: ediciones, paquetes y condiciones */
+    .launch-badge { display: inline-block; margin-top: 12px; padding: 7px 16px; border-radius: 50px;
+        background: rgba(255,177,0,.12); border: 1px solid rgba(255,177,0,.3); color: var(--dorado); font-size: .82rem; font-weight: 600; }
+    .editions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; max-width: 900px; margin: 0 auto 8px; }
+    .app-addon { margin: 4px 0 18px; padding: 10px 14px; border-radius: 10px; background: rgba(255,177,0,.06);
+        border: 1px dashed rgba(255,177,0,.3); color: var(--texto-mut); font-size: .88rem; }
+    .app-addon strong { color: var(--dorado); }
+    .conditions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
+    .cond-item { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; padding: 16px;
+        display: flex; flex-direction: column; gap: 4px; }
+    .cond-item b { color: var(--dorado); font-size: .92rem; }
+    .cond-item span { color: var(--texto-mut); font-size: .82rem; line-height: 1.4; }
+
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
@@ -468,6 +487,8 @@
         .steps .step:last-child { grid-column: span 2; }
         .gallery-desktop { grid-template-columns: repeat(2, 1fr); }
         .price-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+        .editions-grid { grid-template-columns: 1fr; max-width: 460px; }
+        .conditions { grid-template-columns: repeat(2, 1fr); }
         .footer-grid { grid-template-columns: 1fr; gap: 28px; }
     }
     @media (max-width: 768px) {
@@ -479,6 +500,7 @@
         .floating-badge { width: 88px; }
         .pillars { grid-template-columns: 1fr; }
         .sol-grid, .sec-grid, .gallery-desktop { grid-template-columns: 1fr; }
+        .conditions { grid-template-columns: 1fr; }
         .sec-grid .span-2, .sec-grid .span-3 { grid-column: span 1; }
         .steps { grid-template-columns: 1fr; }
         .steps .step:last-child { grid-column: span 1; }
@@ -877,17 +899,19 @@
 <section class="section section--tint" id="planes">
     <div class="container">
         <div class="sec-head reveal">
-            <span class="sec-eyebrow">Planes</span>
+            <span class="sec-eyebrow">Planes y precios</span>
             <h2>Comprás una vez. Es tuyo.</h2>
-            <p>Sin cuotas mensuales ni sorpresas. Elegí el plan que se adapte a tu comercio.</p>
+            <p>Sin cuotas mensuales ni sorpresas. Elegí la edición y sumá las licencias que necesites.</p>
+            <span class="launch-badge">Precios de lanzamiento · vigentes hasta 500 clientes</span>
         </div>
 
-        <div class="price-grid">
+        <!-- Ediciones -->
+        <div class="editions-grid">
             <div class="price-card reveal">
+                <div class="edition">Software Principal · 1 licencia</div>
                 <h3>GC Comercios</h3>
-                <div class="edition">Gestión para venta de mostrador</div>
-                <div class="price">Pago único</div>
-                <div class="price-note">Precio a confirmar</div>
+                <div class="price">$98.000</div>
+                <div class="price-note">Pago único</div>
                 <ul>
                     <li>Caja y ventas POS con código de barras</li>
                     <li>Stock con alerta de mínimos</li>
@@ -895,40 +919,88 @@
                     <li>Proveedores y estadísticas</li>
                     <li>5 formatos de comprobante</li>
                 </ul>
-                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar precio</a>
+                <div class="app-addon">+ App GC Móvil <strong>+$70.000</strong></div>
+                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
             </div>
 
-            <div class="price-card featured reveal">
-                <span class="ribbon">Más elegido</span>
+            <div class="price-card reveal">
+                <div class="edition">Software Principal · 1 licencia</div>
                 <h3>GC Ventas y Servicio Técnico</h3>
-                <div class="edition">Ventas + taller de reparaciones</div>
-                <div class="price">Pago único</div>
-                <div class="price-note">Precio a confirmar</div>
+                <div class="price">$115.000</div>
+                <div class="price-note">Pago único</div>
                 <ul>
                     <li>Todo lo de GC Comercios</li>
                     <li>Órdenes de servicio con 4 etapas</li>
                     <li>Fotos de evidencia desde el celular</li>
                     <li>Trazabilidad de cada equipo</li>
                 </ul>
-                <a href="#contacto" class="btn btn--dorado" style="width:100%;">Consultar precio</a>
-            </div>
-
-            <div class="price-card reveal">
-                <h3>GC Multi-terminal</h3>
-                <div class="edition">Interfaz + app móvil</div>
-                <div class="price">Pago único</div>
-                <div class="price-note">Precio a confirmar</div>
-                <ul>
-                    <li>Terminales adicionales (Solo Interfaz)</li>
-                    <li>App GC Móvil para Android</li>
-                    <li>Bloqueo por huella digital</li>
-                    <li>Un único almacén de datos</li>
-                </ul>
-                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar precio</a>
+                <div class="app-addon">+ App GC Móvil <strong>+$70.000</strong></div>
+                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
             </div>
         </div>
 
-        <p class="price-foot">Pago único por licencia. Precios, instalación, capacitación y condiciones de soporte se confirman con ìDOC al solicitar tu licencia.</p>
+        <!-- Paquetes completos -->
+        <div class="reveal" style="text-align:center; margin:48px 0 24px;">
+            <h3 style="font-size:1.5rem; margin-bottom:6px;">Paquetes completos</h3>
+            <p style="color:var(--texto-mut); max-width:640px; margin:0 auto;">Comprá licencias en bloque y ahorrá. Cada instalación (PC, Interfaz o App) es una licencia.</p>
+        </div>
+
+        <div class="price-grid">
+            <div class="price-card reveal">
+                <div class="edition">6 licencias · todo incluido</div>
+                <h3>GC Completo ×6</h3>
+                <div class="price">$238.000</div>
+                <div class="price-note">Valor individual $465.000 · ahorrás $227.000</div>
+                <ul>
+                    <li>1 Software Principal + 5 licencias a elección</li>
+                    <li>Interfaz y App (PC y Android)</li>
+                    <li>Actualizaciones y correcciones sin costo</li>
+                    <li>Soporte y asistencia 12 meses incluidos</li>
+                </ul>
+                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
+            </div>
+
+            <div class="price-card featured reveal">
+                <span class="ribbon">Más elegido</span>
+                <div class="edition">10 licencias · todo incluido</div>
+                <h3>GC Completo ×10</h3>
+                <div class="price">$340.000</div>
+                <div class="price-note">Valor individual $745.000 · ahorrás $405.000</div>
+                <ul>
+                    <li>1 Software Principal + 9 licencias a elección</li>
+                    <li>Interfaz y App (PC y Android)</li>
+                    <li>Actualizaciones y correcciones sin costo</li>
+                    <li>Soporte y asistencia 12 meses incluidos</li>
+                </ul>
+                <a href="#contacto" class="btn btn--dorado" style="width:100%;">Consultar</a>
+            </div>
+
+            <div class="price-card reveal">
+                <div class="edition">Sin tope · un solo pedido</div>
+                <h3>GC Sin Límite</h3>
+                <div class="price">$480.000</div>
+                <div class="price-note">Infraestructura completa puesta a punto</div>
+                <ul>
+                    <li>Todos los sistemas, cualquier dispositivo</li>
+                    <li>Se arma la estructura que necesites</li>
+                    <li>Incluye los 3 sistemas (Principal, Interfaz, App)</li>
+                    <li>Lo que agregues después se cotiza aparte</li>
+                </ul>
+                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
+            </div>
+        </div>
+
+        <!-- Condiciones -->
+        <div class="conditions reveal">
+            <div class="cond-item"><b>Licencia perpetua</b><span>Pago único, tuya para siempre.</span></div>
+            <div class="cond-item"><b>App por dispositivo</b><span>Cada celular o instalación = 1 licencia.</span></div>
+            <div class="cond-item"><b>Licencia adicional</b><span>Interfaz o App: $70.000 c/u.</span></div>
+            <div class="cond-item"><b>Cambio de equipo</b><span>$45.000 (nueva licencia + instalación).</span></div>
+            <div class="cond-item"><b>Mejorar de plan</b><span>Pagás la diferencia.</span></div>
+            <div class="cond-item"><b>Actualizaciones y correcciones</b><span>Sin costo.</span></div>
+            <div class="cond-item"><b>Soporte y Asistencia</b><span>Opcional, a cotizar según dispositivos y pack.</span></div>
+            <div class="cond-item"><b>Precios de lanzamiento</b><span>En ARS, vigentes hasta 500 clientes.</span></div>
+        </div>
     </div>
 </section>
 
@@ -943,11 +1015,15 @@
         <div class="faq reveal">
             <details class="faq-item">
                 <summary>¿Pago mensualidad?</summary>
-                <div class="faq-content">No. Es un pago único por tu licencia.</div>
+                <div class="faq-content">No. La licencia es de pago único. Después del primer año podés contratar Soporte y Asistencia (opcional), pero no es obligatorio para usar GC.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Hay mantenimiento obligatorio?</summary>
+                <div class="faq-content">No. GC es local y no requiere mantenimiento. Las actualizaciones y correcciones son sin costo. El Soporte y Asistencia es opcional.</div>
             </details>
             <details class="faq-item">
                 <summary>¿Qué pasa si hay un error?</summary>
-                <div class="faq-content">Lo corregimos sin costo, según nuestra política de soporte.</div>
+                <div class="faq-content">Lo corregimos sin costo. Las actualizaciones y correcciones del software son sin costo.</div>
             </details>
             <details class="faq-item">
                 <summary>¿Mis datos están en la nube?</summary>
@@ -967,7 +1043,15 @@
             </details>
             <details class="faq-item">
                 <summary>¿Qué pasa si cambio de computadora?</summary>
-                <div class="faq-content">Hacés una copia cifrada del sistema y la restauramos con ìDOC.</div>
+                <div class="faq-content">Hacés una copia cifrada del sistema y la restauramos. El cambio de equipo requiere una licencia nueva: $45.000 (incluye instalación).</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿La App se licencia por celular?</summary>
+                <div class="faq-content">Sí. Cada instalación en Windows o Android requiere una licencia exclusiva. Por ejemplo, 10 celulares son 10 licencias.</div>
+            </details>
+            <details class="faq-item">
+                <summary>¿Puedo agregar equipos después?</summary>
+                <div class="faq-content">Sí. Cada licencia adicional (Interfaz o App) cuesta $70.000. También podés mejorar tu plan pagando la diferencia.</div>
             </details>
             <details class="faq-item">
                 <summary>¿Emiten factura electrónica ARCA?</summary>
