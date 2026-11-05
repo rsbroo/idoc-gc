@@ -7,6 +7,8 @@
 <meta name="description" content="Sistema de gestión para comercios y servicio técnico. Software propio con datos cifrados en tu equipo, app móvil y pago único.">
 <meta name="keywords" content="sistema de gestión comercial, punto de venta sin mensualidad, software para kioscos, software para servicio técnico, control de stock, sistema de ventas Windows y Android">
 <meta name="author" content="ìDOC">
+<link rel="canonical" href="https://rsbroo.github.io/idoc-gc/">
+<meta name="theme-color" content="#07070b">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -14,18 +16,21 @@
 <meta property="og:description" content="Sistema de gestión comercial propio: datos cifrados en tu equipo, app móvil y pago único. Sin mensualidad, sin nube obligatoria.">
 <meta property="og:image" content="assets/img/emblema-gc.png">
 
-<link rel="icon" type="image/png" href="assets/img/favicon.png">
-<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-<link rel="canonical" href="https://rsbroo.github.io/idoc-gc/">
-<meta name="theme-color" content="#07070b">
-
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GC de ìDOC · Tu negocio. Tus datos. En tu equipo.">
 <meta name="twitter:description" content="Sistema de gestión comercial propio: datos cifrados en tu equipo, app móvil y pago único.">
 <meta name="twitter:image" content="https://rsbroo.github.io/idoc-gc/assets/img/emblema-gc.png">
 
-<!-- Datos estructurados (SEO / resultados enriquecidos) -->
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<!-- Datos estructurados (SEO) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,466 +64,17 @@
         "highPrice": "480000",
         "offerCount": "7"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type":"Question","name":"¿Pago mensualidad?","acceptedAnswer":{"@type":"Answer","text":"No. Es un pago único por tu licencia."}},
-        {"@type":"Question","name":"¿Mis datos están en la nube?","acceptedAnswer":{"@type":"Answer","text":"No. Están en tu equipo, cifrados."}},
-        {"@type":"Question","name":"¿Usa inteligencia artificial?","acceptedAnswer":{"@type":"Answer","text":"No incorpora inteligencia artificial que lea o procese tu información."}},
-        {"@type":"Question","name":"¿Emiten factura electrónica ARCA?","acceptedAnswer":{"@type":"Answer","text":"No en esta versión."}}
-      ]
     }
   ]
 }
 </script>
-
-<!--
-  ════════════════════════════════════════════════════════════════
-  DATOS COMERCIALES (ya configurados)
-  ────────────────────────────────────────────────────────────────
-  WhatsApp  : +54 9 3764 144012  (wa.me/5493764144012)
-  Correo    : brooposadas@gmail.com
-  Zona      : Todo Misiones · equipo distribuido en todo el país
-              (asistencia remota y presencial).
-  Redes     : Facebook · Instagram · TikTok  ✔ configuradas
-              (objeto SOCIAL al final del archivo).
-  Precios   : de lanzamiento (vigentes hasta 500 clientes) — ver
-              sección "Planes".
-  ════════════════════════════════════════════════════════════════
--->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-    :root {
-        --obsidiana: #07070b;
-        --obsidiana-2: #0d0d13;
-        --card: rgba(20, 20, 27, 0.72);
-        --card-2: rgba(28, 28, 37, 0.9);
-        --dorado: #ffb100;
-        --dorado-2: #ffc233;
-        --ambar: #ff8c00;
-        --plata: #c7c9d1;
-        --plata-mut: #9aa0ad;
-        --azul: #4a7dff;
-        --texto: #f4f4f5;
-        --texto-mut: #a1a1aa;
-        --borde: rgba(255, 255, 255, 0.08);
-        --borde-dorado: rgba(255, 177, 0, 0.3);
-        --glow: rgba(255, 177, 0, 0.18);
-        --trans: all .3s cubic-bezier(.25,.8,.25,1);
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-        font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-        background: var(--obsidiana);
-        color: var(--texto);
-        line-height: 1.65;
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        background-image:
-            radial-gradient(circle at 12% 8%, rgba(255,177,0,.05), transparent 45%),
-            radial-gradient(circle at 88% 42%, rgba(74,125,255,.06), transparent 48%),
-            radial-gradient(circle at 50% 110%, rgba(255,177,0,.04), transparent 55%);
-    }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-    section { scroll-margin-top: 84px; }
-
-    .container { width: 92%; max-width: 1180px; margin: 0 auto; }
-    .section { padding: 96px 0; }
-    .section--tint { background: linear-gradient(180deg, transparent, rgba(255,177,0,.025), transparent); }
-
-    .sec-head { text-align: center; max-width: 760px; margin: 0 auto 60px; }
-    .sec-eyebrow {
-        display: inline-block; font-size: .78rem; font-weight: 600; letter-spacing: .18em;
-        text-transform: uppercase; color: var(--dorado); margin-bottom: 14px;
-    }
-    .sec-head h2 {
-        font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
-        background: linear-gradient(to right, #fff, var(--dorado));
-        -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .sec-head p { color: var(--texto-mut); font-size: 1.12rem; }
-
-    /* Botones */
-    .btn {
-        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-        padding: 14px 28px; border-radius: 10px; font-weight: 600; font-size: 1rem;
-        cursor: pointer; transition: var(--trans); border: 1px solid transparent; white-space: nowrap;
-    }
-    .btn--dorado {
-        background: linear-gradient(135deg, var(--dorado), var(--ambar));
-        color: #100c00; box-shadow: 0 6px 22px var(--glow);
-    }
-    .btn--dorado:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(255,177,0,.4); }
-    .btn--ghost { background: transparent; color: var(--texto); border-color: var(--borde); backdrop-filter: blur(4px); }
-    .btn--ghost:hover { border-color: var(--dorado); color: var(--dorado); background: rgba(255,177,0,.05); }
-    .btn svg { width: 18px; height: 18px; }
-
-    /* Header */
-    header {
-        position: fixed; inset: 0 0 auto 0; z-index: 1000;
-        background: rgba(7,7,11,.82); backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--borde); transition: var(--trans);
-    }
-    header.scrolled { background: rgba(7,7,11,.96); box-shadow: 0 6px 24px rgba(0,0,0,.5); }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand img { height: 34px; width: auto; }
-    .brand .brand-txt { display: flex; flex-direction: column; line-height: 1.05; }
-    .brand .brand-txt b { font-size: 1.05rem; font-weight: 700; letter-spacing: .02em; }
-    .brand .brand-txt span { font-size: .66rem; color: var(--texto-mut); letter-spacing: .08em; text-transform: uppercase; }
-
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a { font-size: .95rem; font-weight: 500; color: var(--texto-mut); transition: var(--trans); position: relative; }
-    .nav-links a:hover { color: var(--dorado); }
-    .nav-links a::after {
-        content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px;
-        background: var(--dorado); transition: var(--trans);
-    }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta { display: flex; align-items: center; gap: 14px; }
-    .burger { display: none; background: none; border: 1px solid var(--borde); color: var(--texto);
-        width: 44px; height: 44px; border-radius: 10px; font-size: 1.3rem; cursor: pointer; }
-
-    .mobile-menu { display: none; flex-direction: column; gap: 4px; padding: 14px 0 22px; border-top: 1px solid var(--borde); }
-    .mobile-menu a { padding: 12px 4px; color: var(--texto-mut); font-weight: 500; border-bottom: 1px solid rgba(255,255,255,.04); }
-    .mobile-menu a:hover { color: var(--dorado); }
-    .mobile-menu.open { display: flex; }
-
-    /* Hero */
-    .hero { padding: 168px 0 72px; position: relative; }
-    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
-    .hero-eyebrow {
-        display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 50px;
-        background: rgba(255,177,0,.1); border: 1px solid rgba(255,177,0,.22);
-        color: var(--dorado); font-size: .82rem; font-weight: 600; margin-bottom: 22px;
-    }
-    .hero-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dorado); box-shadow: 0 0 12px var(--dorado); }
-    .hero h1 { font-size: clamp(2.4rem, 5.4vw, 3.9rem); font-weight: 800; line-height: 1.06; margin-bottom: 20px; letter-spacing: -.02em; }
-    .hero h1 .accent { color: var(--dorado); }
-    .hero p.lead { font-size: 1.18rem; color: var(--texto-mut); max-width: 92%; margin-bottom: 34px; }
-    .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
-    .hero-proof { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 34px; }
-    .hero-proof .proof { display: flex; align-items: center; gap: 9px; font-size: .86rem; color: var(--plata-mut); }
-    .hero-proof .proof svg { width: 17px; height: 17px; color: var(--dorado); flex: none; }
-
-    /* Composición visual del hero */
-    .hero-visual { position: relative; display: flex; justify-content: center; }
-    .hero-visual::before {
-        content: ''; position: absolute; width: 82%; height: 82%; top: 10%;
-        background: radial-gradient(circle, var(--glow), transparent 68%); filter: blur(48px); z-index: 0;
-    }
-    .device-window {
-        position: relative; z-index: 2; width: 100%; max-width: 520px; border-radius: 16px; overflow: hidden;
-        background: #0c0c12; border: 1px solid var(--borde); box-shadow: 0 30px 70px rgba(0,0,0,.55);
-    }
-    .device-window .bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: #101017; border-bottom: 1px solid var(--borde); }
-    .device-window .bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
-    .device-window .bar i:nth-child(1) { background: #ff5f57; }
-    .device-window .bar i:nth-child(2) { background: #febc2e; }
-    .device-window .bar i:nth-child(3) { background: #28c840; }
-    .device-window .bar span { margin-left: 10px; font-size: .72rem; color: var(--texto-mut); }
-    .device-window .screen { background: #f6f6f6; }
-    .device-window .screen img { width: 100%; height: auto; }
-
-    .floating-phone {
-        position: absolute; z-index: 3; right: -14px; bottom: -26px; width: 158px;
-        border-radius: 26px; overflow: hidden; border: 1px solid var(--borde);
-        background: #000; box-shadow: 0 24px 50px rgba(0,0,0,.6); transform: rotate(2deg);
-    }
-    .floating-phone img { width: 100%; height: auto; }
-    .floating-badge {
-        position: absolute; z-index: 4; top: -16px; left: -16px; width: 112px;
-        filter: drop-shadow(0 10px 24px rgba(0,0,0,.6));
-    }
-
-    /* Pilares */
-    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 34px; }
-    .pillar {
-        background: var(--card); backdrop-filter: blur(14px); border: 1px solid var(--borde);
-        border-radius: 14px; padding: 28px 22px; text-align: center; transition: var(--trans);
-    }
-    .pillar:hover { transform: translateY(-5px); border-color: var(--borde-dorado); background: var(--card-2); }
-    .pillar .ico {
-        width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 14px; display: grid; place-items: center;
-        background: rgba(255,177,0,.1); border: 1px solid rgba(255,177,0,.2); color: var(--dorado);
-    }
-    .pillar .ico svg { width: 26px; height: 26px; }
-    .pillar h3 { color: var(--dorado); font-size: 1.12rem; margin-bottom: 8px; }
-    .pillar p { font-size: .88rem; color: var(--texto-mut); }
-
-    /* Por qué ìDOC */
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .why-brand img { width: 100%; max-width: 460px; margin: 0 auto; filter: drop-shadow(0 18px 40px rgba(0,0,0,.55)); }
-    .why-list { display: grid; gap: 16px; }
-    .why-item {
-        display: flex; gap: 16px; padding: 20px; border-radius: 14px; background: var(--card);
-        border: 1px solid var(--borde); transition: var(--trans);
-    }
-    .why-item:hover { border-color: var(--borde-dorado); }
-    .why-item .n { flex: none; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center;
-        background: rgba(255,177,0,.12); color: var(--dorado); font-weight: 700; }
-    .why-item h4 { font-size: 1.05rem; margin-bottom: 4px; }
-    .why-item p { color: var(--texto-mut); font-size: .93rem; }
-
-    /* Soluciones */
-    .sol-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .sol-card {
-        background: var(--card); border: 1px solid var(--borde); border-radius: 18px; overflow: hidden;
-        display: flex; flex-direction: column; transition: var(--trans);
-    }
-    .sol-card:hover { border-color: var(--borde-dorado); transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
-    .sol-media { background: #0c0c12; border-bottom: 1px solid var(--borde); position: relative; }
-    .sol-media img { width: 100%; height: 210px; object-fit: cover; object-position: top; }
-    .sol-media.phone { display: flex; justify-content: center; padding-top: 16px; }
-    .sol-media.phone img { width: auto; height: 290px; object-fit: contain; object-position: center; }
-    .sol-media .tag { position: absolute; top: 12px; left: 12px; z-index: 2; }
-    .sol-body { padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
-    .sol-body h3 { font-size: 1.4rem; }
-    .sol-body .sub { color: var(--plata-mut); font-size: .95rem; }
-    .sol-body ul { display: grid; gap: 8px; }
-    .sol-body ul li { display: flex; align-items: flex-start; gap: 9px; color: var(--texto-mut); font-size: .9rem; }
-    .sol-body ul li::before { content: '✓'; color: var(--dorado); font-weight: 700; flex: none; }
-    .tag {
-        display: inline-block; padding: 5px 12px; border-radius: 50px; font-size: .7rem; font-weight: 600;
-        letter-spacing: .05em; background: rgba(7,7,11,.8); color: var(--dorado); border: 1px solid var(--borde-dorado);
-    }
-
-    .callout {
-        margin-top: 30px; padding: 26px 30px; border-radius: 16px; text-align: center;
-        background: rgba(255,177,0,.06); border: 1px solid rgba(255,177,0,.22);
-    }
-    .callout p { font-size: 1.08rem; color: var(--texto); }
-    .callout strong { color: var(--dorado); }
-
-    /* Seguridad */
-    .sec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .sec-card {
-        background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 26px; transition: var(--trans);
-    }
-    .sec-card:hover { border-color: var(--borde-dorado); background: var(--card-2); }
-    .sec-card .q { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 600; margin-bottom: 12px; }
-    .sec-card .q .ico { flex: none; width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
-        background: rgba(255,177,0,.12); color: var(--dorado); }
-    .sec-card .q .ico svg { width: 18px; height: 18px; }
-    .sec-card .ans { color: var(--texto-mut); font-size: .9rem; margin-bottom: 14px; }
-    .sec-card .ans strong { color: var(--texto); font-weight: 600; }
-    .sec-card .proof {
-        background: rgba(255,177,0,.05); border-left: 3px solid var(--dorado); padding: 10px 14px;
-        font-size: .84rem; color: var(--texto); border-radius: 0 8px 8px 0;
-    }
-    .sec-card .proof b { color: var(--dorado); font-weight: 600; }
-    .sec-grid .span-2 { grid-column: span 2; }
-    .sec-grid .span-3 { grid-column: span 3; }
-
-    .privacy {
-        margin-top: 26px; padding: 34px 34px; border-radius: 18px; background: var(--card);
-        border: 1px solid var(--borde); text-align: center;
-    }
-    .privacy h3 { color: var(--dorado); margin-bottom: 14px; font-size: 1.3rem; }
-    .privacy p { color: var(--texto-mut); max-width: 820px; margin: 0 auto; font-size: 1.06rem; }
-
-    /* Tecnología */
-    .tech { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 16px;
-        overflow: hidden; border: 1px solid var(--borde); }
-    .tech th, .tech td { padding: 20px 24px; text-align: left; border-bottom: 1px solid var(--borde); vertical-align: top; }
-    .tech th { background: rgba(255,177,0,.1); color: var(--dorado); font-weight: 600; width: 26%; white-space: nowrap; }
-    .tech td { color: var(--texto-mut); }
-    .tech tr:last-child th, .tech tr:last-child td { border-bottom: none; }
-
-    /* Cómo funciona */
-    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; counter-reset: step; }
-    .step { background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 26px 20px; position: relative; transition: var(--trans); }
-    .step:hover { border-color: var(--borde-dorado); transform: translateY(-4px); }
-    .step .num {
-        width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 14px;
-        background: linear-gradient(135deg, var(--dorado), var(--ambar)); color: #100c00; font-weight: 800; font-size: 1.1rem;
-    }
-    .step h4 { font-size: 1rem; margin-bottom: 8px; }
-    .step p { color: var(--texto-mut); font-size: .88rem; }
-
-    /* Galería */
-    .gallery-desktop { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .shot { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--borde); background: #0c0c12; transition: var(--trans); }
-    .shot:hover { transform: translateY(-4px); border-color: var(--borde-dorado); }
-    .shot img { width: 100%; height: auto; display: block; }
-    .gallery-mobile { display: flex; gap: 16px; overflow-x: auto; padding: 6px 2px 20px; scrollbar-width: thin; scrollbar-color: var(--dorado) transparent; }
-    .gallery-mobile .shot { flex: none; width: 168px; }
-    .gallery-mobile .shot img { width: 100%; height: auto; }
-
-    /* Planes */
-    .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: stretch; }
-    .price-card {
-        background: var(--card); border: 1px solid var(--borde); border-radius: 18px; padding: 36px 30px;
-        display: flex; flex-direction: column; text-align: center; position: relative; transition: var(--trans);
-    }
-    .price-card.featured { border-color: var(--dorado); background: linear-gradient(180deg, rgba(255,177,0,.06), var(--card) 55%); }
-    .price-card.featured .ribbon {
-        position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--dorado);
-        color: #100c00; padding: 5px 16px; border-radius: 20px; font-weight: 700; font-size: .74rem; letter-spacing: .04em;
-    }
-    .price-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
-    .price-card .edition { color: var(--plata-mut); font-size: .86rem; margin-bottom: 20px; }
-    .price-card .price { font-size: 2rem; font-weight: 800; color: var(--dorado); margin-bottom: 4px; }
-    .price-card .price-note { font-size: .82rem; color: var(--texto-mut); margin-bottom: 24px; }
-    .price-card ul { text-align: left; margin-bottom: 30px; display: grid; gap: 12px; flex: 1; }
-    .price-card ul li { display: flex; align-items: flex-start; gap: 10px; color: var(--texto-mut); font-size: .9rem; }
-    .price-card ul li::before { content: '✓'; color: var(--dorado); font-weight: 700; flex: none; }
-    .price-foot { text-align: center; color: var(--texto-mut); font-size: .84rem; margin-top: 26px; }
-
-    /* FAQ */
-    .faq { max-width: 820px; margin: 0 auto; }
-    .faq-item { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; margin-bottom: 14px; overflow: hidden; }
-    .faq-item summary {
-        padding: 20px 24px; font-weight: 600; cursor: pointer; list-style: none;
-        display: flex; justify-content: space-between; align-items: center; transition: var(--trans);
-    }
-    .faq-item summary::-webkit-details-marker { display: none; }
-    .faq-item summary::after { content: '+'; color: var(--dorado); font-size: 1.6rem; line-height: 1; transition: var(--trans); }
-    .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item[open] summary { color: var(--dorado); }
-    .faq-content { padding: 0 24px 22px; color: var(--texto-mut); }
-
-    /* Contacto */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-    .form { display: grid; gap: 16px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .field { display: flex; flex-direction: column; gap: 7px; }
-    .field label { font-size: .85rem; font-weight: 500; color: var(--plata); }
-    .field input, .field select, .field textarea {
-        background: var(--card); border: 1px solid var(--borde); border-radius: 10px; padding: 13px 15px;
-        color: var(--texto); font-family: inherit; font-size: .95rem; transition: var(--trans); width: 100%;
-    }
-    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--dorado); }
-    .field textarea { min-height: 120px; resize: vertical; }
-    .form-note { font-size: .8rem; color: var(--texto-mut); }
-
-    .contact-side { display: grid; gap: 16px; }
-    .contact-card { background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
-    .contact-card .ico { flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
-        background: rgba(255,177,0,.12); color: var(--dorado); }
-    .contact-card .ico svg { width: 22px; height: 22px; }
-    .contact-card h4 { font-size: .95rem; margin-bottom: 3px; }
-    .contact-card p { color: var(--texto-mut); font-size: .9rem; word-break: break-word; }
-    .contact-card a { color: var(--dorado); }
-    .contact-card a:hover { text-decoration: underline; }
-    .social-row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-    .social-link { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center;
-        background: rgba(255,177,0,.1); border: 1px solid var(--borde); color: var(--texto-mut); transition: var(--trans); }
-    .social-link:hover { color: var(--dorado); border-color: var(--borde-dorado); transform: translateY(-2px); }
-    .social-link svg { width: 20px; height: 20px; }
-
-    /* Footer */
-    footer { background: #000; border-top: 1px solid var(--borde); padding: 60px 0 28px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-    .footer-brand img { height: 40px; margin-bottom: 18px; }
-    .footer-brand p { color: var(--texto-mut); max-width: 320px; font-size: .9rem; }
-    .footer-links h4 { margin-bottom: 16px; font-size: 1rem; }
-    .footer-links ul li { margin-bottom: 10px; }
-    .footer-links ul li a { color: var(--texto-mut); transition: var(--trans); font-size: .9rem; }
-    .footer-links ul li a:hover { color: var(--dorado); }
-    .footer-bottom { text-align: center; padding-top: 26px; border-top: 1px solid var(--borde); color: var(--texto-mut); font-size: .84rem; }
-    .footer-bottom .motto { color: var(--dorado); font-size: .9rem; margin-top: 8px; }
-
-    /* Rubros */
-    .rubros { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto; }
-    .rubro-chip { padding: 12px 22px; border-radius: 50px; background: var(--card); border: 1px solid var(--borde);
-        color: var(--plata); font-weight: 500; font-size: .95rem; transition: var(--trans); }
-    .rubro-chip:hover { border-color: var(--borde-dorado); color: var(--dorado); transform: translateY(-2px); }
-
-    /* Comparativa */
-    .table-wrap { overflow-x: auto; border-radius: 16px; }
-    .compare { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--borde);
-        border-radius: 16px; overflow: hidden; min-width: 660px; }
-    .compare th, .compare td { padding: 16px 18px; text-align: left; border-bottom: 1px solid var(--borde); vertical-align: top; }
-    .compare thead th { background: rgba(255,177,0,.08); color: var(--plata); font-weight: 600; font-size: .88rem; }
-    .compare tbody th { color: var(--texto-mut); font-weight: 500; font-size: .86rem; width: 20%; }
-    .compare td { color: var(--texto-mut); font-size: .9rem; }
-    .compare td.gc { color: var(--dorado); background: rgba(255,177,0,.05); font-weight: 600; }
-    .compare thead th.gc { color: var(--dorado); }
-    .compare tr:last-child td, .compare tr:last-child th { border-bottom: none; }
-
-    /* WhatsApp flotante + volver arriba */
-    .wa-float { position: fixed; right: 22px; bottom: 22px; z-index: 1100; width: 56px; height: 56px; border-radius: 50%;
-        background: #25d366; display: grid; place-items: center; box-shadow: 0 8px 26px rgba(0,0,0,.45); transition: var(--trans); }
-    .wa-float:hover { transform: translateY(-3px) scale(1.05); }
-    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
-    .to-top { position: fixed; right: 27px; bottom: 92px; z-index: 1090; width: 44px; height: 44px; border-radius: 50%;
-        background: var(--card-2); border: 1px solid var(--borde); color: var(--texto-mut); display: grid; place-items: center;
-        cursor: pointer; opacity: 0; pointer-events: none; transition: var(--trans); font-size: 1.1rem; }
-    .to-top.show { opacity: 1; pointer-events: auto; }
-    .to-top:hover { color: var(--dorado); border-color: var(--borde-dorado); }
-
-    /* Planes: ediciones, paquetes y condiciones */
-    .launch-badge { display: inline-block; margin-top: 12px; padding: 7px 16px; border-radius: 50px;
-        background: rgba(255,177,0,.12); border: 1px solid rgba(255,177,0,.3); color: var(--dorado); font-size: .82rem; font-weight: 600; }
-    .editions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; max-width: 900px; margin: 0 auto 8px; }
-    .app-addon { margin: 4px 0 18px; padding: 10px 14px; border-radius: 10px; background: rgba(255,177,0,.06);
-        border: 1px dashed rgba(255,177,0,.3); color: var(--texto-mut); font-size: .88rem; }
-    .app-addon strong { color: var(--dorado); }
-    .conditions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
-    .cond-item { background: var(--card); border: 1px solid var(--borde); border-radius: 12px; padding: 16px;
-        display: flex; flex-direction: column; gap: 4px; }
-    .cond-item b { color: var(--dorado); font-size: .92rem; }
-    .cond-item span { color: var(--texto-mut); font-size: .82rem; line-height: 1.4; }
-
-    /* Reveal */
-    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* Responsive */
-    @media (max-width: 992px) {
-        .hero-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; }
-        .hero { padding-top: 140px; }
-        .hero p.lead { max-width: 100%; }
-        .why-brand { order: -1; }
-        .pillars { grid-template-columns: repeat(2, 1fr); }
-        .sec-grid { grid-template-columns: repeat(2, 1fr); }
-        .sec-grid .span-2, .sec-grid .span-3 { grid-column: span 2; }
-        .steps { grid-template-columns: repeat(2, 1fr); }
-        .steps .step:last-child { grid-column: span 2; }
-        .gallery-desktop { grid-template-columns: repeat(2, 1fr); }
-        .price-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
-        .editions-grid { grid-template-columns: 1fr; max-width: 460px; }
-        .conditions { grid-template-columns: repeat(2, 1fr); }
-        .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    }
-    @media (max-width: 768px) {
-        .nav-links, .nav-cta .btn { display: none; }
-        .burger { display: block; }
-        .hero h1 { font-size: 2.4rem; }
-        .hero-visual { margin-top: 10px; }
-        .floating-phone { width: 126px; right: -6px; }
-        .floating-badge { width: 88px; }
-        .pillars { grid-template-columns: 1fr; }
-        .sol-grid, .sec-grid, .gallery-desktop { grid-template-columns: 1fr; }
-        .conditions { grid-template-columns: 1fr; }
-        .sec-grid .span-2, .sec-grid .span-3 { grid-column: span 1; }
-        .steps { grid-template-columns: 1fr; }
-        .steps .step:last-child { grid-column: span 1; }
-        .form-row { grid-template-columns: 1fr; }
-        .tech th, .tech td { display: block; width: 100%; }
-        .tech th { padding-bottom: 6px; }
-        .tech td { padding-top: 6px; }
-        .tech tr { display: block; border-bottom: 1px solid var(--borde); }
-        .section { padding: 70px 0; }
-    }
-</style>
 </head>
 <body>
 
 <!-- Header -->
 <header id="header">
     <div class="container nav">
-        <a href="#inicio" class="brand" aria-label="ìDOC · GC">
+        <a href="index.html" class="brand" aria-label="ìDOC · GC">
             <img src="assets/img/logo-idoc-nav.png" alt="ìDOC">
             <span class="brand-txt">
                 <b>ìDOC</b>
@@ -526,26 +82,21 @@
             </span>
         </a>
         <nav class="nav-links">
-            <a href="#soluciones">Soluciones</a>
-            <a href="#seguridad">Seguridad</a>
-            <a href="#tecnologia">Tecnología</a>
-            <a href="#como-funciona">Cómo funciona</a>
-            <a href="#planes">Planes</a>
-            <a href="#faq">Preguntas</a>
+            <a href="index.html" class="active">Inicio</a>
+            <a href="seguridad.html">Seguridad</a>
+            <a href="planes.html">Planes</a>
         </nav>
         <div class="nav-cta">
-            <a href="#contacto" class="btn btn--dorado">Hablar con ìDOC</a>
+            <a href="planes.html#contacto" class="btn btn--dorado">Hablar con ìDOC</a>
             <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
         </div>
     </div>
     <div class="container mobile-menu" id="mobileMenu">
-        <a href="#soluciones">Soluciones</a>
-        <a href="#seguridad">Seguridad</a>
-        <a href="#tecnologia">Tecnología</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#planes">Planes</a>
-        <a href="#faq">Preguntas</a>
-        <a href="#contacto">Contacto</a>
+        <a href="index.html">Inicio</a>
+        <a href="seguridad.html">Seguridad</a>
+        <a href="planes.html">Planes</a>
+        <a href="planes.html#contacto">Contacto</a>
+        <a href="legal.html">Legal</a>
     </div>
 </header>
 
@@ -557,11 +108,11 @@
             <h1>Tu negocio. Tus datos. <span class="accent">En tu equipo.</span></h1>
             <p class="lead">GC es el sistema de gestión comercial desarrollado por ìDOC. Se instala en tu computadora, se maneja desde tu celular y lo pagás una sola vez.</p>
             <div class="hero-actions">
-                <a href="#como-funciona" class="btn btn--dorado">
+                <a href="seguridad.html#como-funciona" class="btn btn--dorado">
                     Ver cómo funciona
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </a>
-                <a href="#contacto" class="btn btn--ghost">Hablar con ìDOC</a>
+                <a href="planes.html#contacto" class="btn btn--ghost">Hablar con ìDOC</a>
             </div>
             <div class="hero-proof">
                 <span class="proof">
@@ -588,7 +139,6 @@
         </div>
     </div>
 
-    <!-- Pilares -->
     <div class="container">
         <div class="pillars reveal">
             <div class="pillar">
@@ -741,130 +291,6 @@
     </div>
 </section>
 
-<!-- Seguridad -->
-<section class="section section--tint" id="seguridad">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Seguridad</span>
-            <h2>Seguridad que podés comprobar</h2>
-            <p>No te pedimos que confíes. Te mostramos cómo comprobarlo.</p>
-        </div>
-
-        <div class="sec-grid">
-            <div class="sec-card reveal">
-                <div class="q"><span class="ico">🔒</span> ¿Pueden leer mis datos si copian el archivo?</div>
-                <p class="ans">La base se guarda <strong>cifrada (AES-256)</strong> con una clave ligada a tu equipo.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> abrí la carpeta de datos: verás contenido ilegible.</div>
-            </div>
-            <div class="sec-card reveal">
-                <div class="q"><span class="ico">📄</span> ¿Y si abren los CSV?</div>
-                <p class="ans">Los archivos internos también están <strong>cifrados</strong>.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> abrilos con el bloc de notas.</div>
-            </div>
-            <div class="sec-card reveal">
-                <div class="q"><span class="ico">🛡️</span> ¿Quién entra al sistema?</div>
-                <p class="ans">Usuarios con contraseña, <strong>roles y permisos por módulo</strong>.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> probá entrar con un usuario limitado.</div>
-            </div>
-            <div class="sec-card reveal">
-                <div class="q"><span class="ico">⛔</span> ¿Y si alguien prueba contraseñas?</div>
-                <p class="ans"><strong>Bloqueo automático</strong> tras 5 intentos fallidos y registro del evento.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> hacé la prueba en vivo.</div>
-            </div>
-            <div class="sec-card reveal">
-                <div class="q"><span class="ico">📝</span> ¿Cómo sé quién hizo cada cosa?</div>
-                <p class="ans"><strong>Registro de auditoría</strong> de cada operación.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> abrí el historial.</div>
-            </div>
-            <div class="sec-card reveal">
-                <div class="q"><span class="ico">🔑</span> ¿Se puede instalar sin permiso?</div>
-                <p class="ans">Cada instalación necesita <strong>código de instalación y clave firmada</strong>.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> intentá activar sin clave.</div>
-            </div>
-            <div class="sec-card span-3 reveal">
-                <div class="q"><span class="ico">📱</span> ¿Mi celular es un riesgo?</div>
-                <p class="ans"><strong>Bloqueo por huella</strong>, y la app no copia datos a la nube de Android.</p>
-                <div class="proof"><b>Cómo lo comprobás:</b> probá abrir la app sin huella.</div>
-            </div>
-        </div>
-
-        <div class="privacy reveal">
-            <h3>Privacidad y transparencia</h3>
-            <p>GC no usa inteligencia artificial en la nube. No envía tus datos a ìDOC ni a terceros. Las únicas conexiones externas son las que vos activás: WhatsApp (para enviar comprobantes) y Tailscale (red privada).</p>
-        </div>
-    </div>
-</section>
-
-<!-- Tecnología -->
-<section class="section" id="tecnologia">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Tecnología</span>
-            <h2>Software propio. No un sitio web disfrazado.</h2>
-            <p>GC no es una página web ni una plantilla. Es software nativo, desarrollado por ìDOC:</p>
-        </div>
-
-        <div class="reveal">
-            <table class="tech">
-                <tbody>
-                    <tr><th>Escritorio</th><td>C# sobre .NET, interfaz Windows Forms con motor gráfico propio.</td></tr>
-                    <tr><th>Datos</th><td>SQLite embebida con esquema propio y cifrado AES-256.</td></tr>
-                    <tr><th>Conexión interna</th><td>Servidor propio de sincronización con API REST y descubrimiento automático.</td></tr>
-                    <tr><th>Móvil</th><td>App nativa Android en Kotlin y Jetpack Compose (Material 3).</td></tr>
-                    <tr><th>Licencias</th><td>Instalador y generador de claves propios.</td></tr>
-                    <tr><th>Tamaño</th><td>Más de 19.500 líneas de C# y 22 módulos Kotlin.</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<!-- Cómo funciona -->
-<section class="section section--tint" id="como-funciona">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Cómo funciona</span>
-            <h2>En marcha en 5 pasos</h2>
-        </div>
-
-        <div class="steps">
-            <div class="step reveal"><div class="num">1</div><h4>Contactás a ìDOC</h4><p>Y elegís el modelo que mejor se adapta a tu comercio.</p></div>
-            <div class="step reveal"><div class="num">2</div><h4>Instalamos GC</h4><p>En tu equipo principal, con la instalación incluida en los planes.</p></div>
-            <div class="step reveal"><div class="num">3</div><h4>Activás con tu clave</h4><p>Recibís tu código de instalación y activás el sistema.</p></div>
-            <div class="step reveal"><div class="num">4</div><h4>Configurás tu comercio</h4><p>Con un asistente: usuario propietario, datos del local, logo y rubro.</p></div>
-            <div class="step reveal"><div class="num">5</div><h4>Conectás tus dispositivos</h4><p>Celulares y terminales, con un código QR o la dirección del equipo principal.</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- Galería -->
-<section class="section" id="galeria">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Así se ve</span>
-            <h2>El sistema, en pantalla</h2>
-            <p>Capturas reales del software GC de ìDOC, en escritorio y en la app móvil.</p>
-        </div>
-
-        <div class="gallery-desktop reveal">
-            <div class="shot"><img src="assets/img/gc-escritorio-1.png" alt="Captura de GC" loading="lazy" decoding="async"></div>
-            <div class="shot"><img src="assets/img/gc-escritorio-5.png" alt="Captura de GC" loading="lazy" decoding="async"></div>
-            <div class="shot"><img src="assets/img/gc-escritorio-6.png" alt="Captura de GC" loading="lazy" decoding="async"></div>
-        </div>
-
-        <div style="margin-top: 28px;">
-            <div class="gallery-mobile reveal">
-                <div class="shot"><img src="assets/img/gc-app-1.png" alt="App GC Móvil" loading="lazy" decoding="async"></div>
-                <div class="shot"><img src="assets/img/gc-app-2.png" alt="App GC Móvil" loading="lazy" decoding="async"></div>
-                <div class="shot"><img src="assets/img/gc-app-3.png" alt="App GC Móvil" loading="lazy" decoding="async"></div>
-                <div class="shot"><img src="assets/img/gc-app-4.png" alt="App GC Móvil" loading="lazy" decoding="async"></div>
-                <div class="shot"><img src="assets/img/gc-app-5.png" alt="App GC Móvil" loading="lazy" decoding="async"></div>
-                <div class="shot"><img src="assets/img/gc-app-6.png" alt="App GC Móvil" loading="lazy" decoding="async"></div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Comparativa -->
 <section class="section" id="comparativa">
     <div class="container">
@@ -892,255 +318,11 @@
             </table>
         </div>
         <p class="price-foot reveal">Comparación de categorías, no de marcas concretas.</p>
-    </div>
-</section>
 
-<!-- Planes -->
-<section class="section section--tint" id="planes">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Planes y precios</span>
-            <h2>Comprás una vez. Es tuyo.</h2>
-            <p>Sin cuotas mensuales ni sorpresas. Elegí la edición y sumá las licencias que necesites.</p>
-            <span class="launch-badge">Precios de lanzamiento · vigentes hasta 500 clientes</span>
-        </div>
-
-        <!-- Ediciones -->
-        <div class="editions-grid">
-            <div class="price-card reveal">
-                <div class="edition">Software Principal · 1 licencia</div>
-                <h3>GC Comercios</h3>
-                <div class="price">$98.000</div>
-                <div class="price-note">Pago único</div>
-                <ul>
-                    <li>Caja y ventas POS con código de barras</li>
-                    <li>Stock con alerta de mínimos</li>
-                    <li>Clientes y cuenta corriente</li>
-                    <li>Proveedores y estadísticas</li>
-                    <li>5 formatos de comprobante</li>
-                </ul>
-                <div class="app-addon">+ App GC Móvil <strong>+$70.000</strong></div>
-                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
-            </div>
-
-            <div class="price-card reveal">
-                <div class="edition">Software Principal · 1 licencia</div>
-                <h3>GC Ventas y Servicio Técnico</h3>
-                <div class="price">$115.000</div>
-                <div class="price-note">Pago único</div>
-                <ul>
-                    <li>Todo lo de GC Comercios</li>
-                    <li>Órdenes de servicio con 4 etapas</li>
-                    <li>Fotos de evidencia desde el celular</li>
-                    <li>Trazabilidad de cada equipo</li>
-                </ul>
-                <div class="app-addon">+ App GC Móvil <strong>+$70.000</strong></div>
-                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
-            </div>
-        </div>
-
-        <!-- Paquetes completos -->
-        <div class="reveal" style="text-align:center; margin:48px 0 24px;">
-            <h3 style="font-size:1.5rem; margin-bottom:6px;">Paquetes completos</h3>
-            <p style="color:var(--texto-mut); max-width:640px; margin:0 auto;">Comprá licencias en bloque y ahorrá. Cada instalación (PC, Interfaz o App) es una licencia.</p>
-        </div>
-
-        <div class="price-grid">
-            <div class="price-card reveal">
-                <div class="edition">6 licencias · todo incluido</div>
-                <h3>GC Completo ×6</h3>
-                <div class="price">$238.000</div>
-                <div class="price-note">Valor individual $465.000 · ahorrás $227.000</div>
-                <ul>
-                    <li>1 Software Principal + 5 licencias a elección</li>
-                    <li>Interfaz y App (PC y Android)</li>
-                    <li>Actualizaciones y correcciones sin costo</li>
-                    <li>Soporte y asistencia 12 meses incluidos</li>
-                </ul>
-                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
-            </div>
-
-            <div class="price-card featured reveal">
-                <span class="ribbon">Más elegido</span>
-                <div class="edition">10 licencias · todo incluido</div>
-                <h3>GC Completo ×10</h3>
-                <div class="price">$340.000</div>
-                <div class="price-note">Valor individual $745.000 · ahorrás $405.000</div>
-                <ul>
-                    <li>1 Software Principal + 9 licencias a elección</li>
-                    <li>Interfaz y App (PC y Android)</li>
-                    <li>Actualizaciones y correcciones sin costo</li>
-                    <li>Soporte y asistencia 12 meses incluidos</li>
-                </ul>
-                <a href="#contacto" class="btn btn--dorado" style="width:100%;">Consultar</a>
-            </div>
-
-            <div class="price-card reveal">
-                <div class="edition">Sin tope · un solo pedido</div>
-                <h3>GC Sin Límite</h3>
-                <div class="price">$480.000</div>
-                <div class="price-note">Infraestructura completa puesta a punto</div>
-                <ul>
-                    <li>Todos los sistemas, cualquier dispositivo</li>
-                    <li>Se arma la estructura que necesites</li>
-                    <li>Incluye los 3 sistemas (Principal, Interfaz, App)</li>
-                    <li>Lo que agregues después se cotiza aparte</li>
-                </ul>
-                <a href="#contacto" class="btn btn--ghost" style="width:100%;">Consultar</a>
-            </div>
-        </div>
-
-        <!-- Condiciones -->
-        <div class="conditions reveal">
-            <div class="cond-item"><b>Licencia perpetua</b><span>Pago único, tuya para siempre.</span></div>
-            <div class="cond-item"><b>App por dispositivo</b><span>Cada celular o instalación = 1 licencia.</span></div>
-            <div class="cond-item"><b>Licencia adicional</b><span>Interfaz o App: $70.000 c/u.</span></div>
-            <div class="cond-item"><b>Cambio de equipo</b><span>$45.000 (nueva licencia + instalación).</span></div>
-            <div class="cond-item"><b>Mejorar de plan</b><span>Pagás la diferencia.</span></div>
-            <div class="cond-item"><b>Actualizaciones y correcciones</b><span>Sin costo.</span></div>
-            <div class="cond-item"><b>Soporte y Asistencia</b><span>Opcional, a cotizar según dispositivos y pack.</span></div>
-            <div class="cond-item"><b>Precios de lanzamiento</b><span>En ARS, vigentes hasta 500 clientes.</span></div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="section" id="faq">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Preguntas frecuentes</span>
-            <h2>Lo que más nos preguntan</h2>
-        </div>
-
-        <div class="faq reveal">
-            <details class="faq-item">
-                <summary>¿Pago mensualidad?</summary>
-                <div class="faq-content">No. La licencia es de pago único. Después del primer año podés contratar Soporte y Asistencia (opcional), pero no es obligatorio para usar GC.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Hay mantenimiento obligatorio?</summary>
-                <div class="faq-content">No. GC es local y no requiere mantenimiento. Las actualizaciones y correcciones son sin costo. El Soporte y Asistencia es opcional.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Qué pasa si hay un error?</summary>
-                <div class="faq-content">Lo corregimos sin costo. Las actualizaciones y correcciones del software son sin costo.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Mis datos están en la nube?</summary>
-                <div class="faq-content">No. Están en tu equipo, cifrados.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Necesito internet?</summary>
-                <div class="faq-content">La operación diaria es local; internet solo se usa para integraciones opcionales (como enviar comprobantes por WhatsApp o conectar el celular por red privada Tailscale).</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Puedo usarlo desde el celular fuera del local?</summary>
-                <div class="faq-content">Sí, mediante red privada Tailscale (opcional).</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Usa inteligencia artificial?</summary>
-                <div class="faq-content">No incorpora inteligencia artificial que lea o procese tu información.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Qué pasa si cambio de computadora?</summary>
-                <div class="faq-content">Hacés una copia cifrada del sistema y la restauramos. El cambio de equipo requiere una licencia nueva: $45.000 (incluye instalación).</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿La App se licencia por celular?</summary>
-                <div class="faq-content">Sí. Cada instalación en Windows o Android requiere una licencia exclusiva. Por ejemplo, 10 celulares son 10 licencias.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Puedo agregar equipos después?</summary>
-                <div class="faq-content">Sí. Cada licencia adicional (Interfaz o App) cuesta $70.000. También podés mejorar tu plan pagando la diferencia.</div>
-            </details>
-            <details class="faq-item">
-                <summary>¿Emiten factura electrónica ARCA?</summary>
-                <div class="faq-content">No en esta versión.</div>
-            </details>
-        </div>
-    </div>
-</section>
-
-<!-- Contacto -->
-<section class="section section--tint" id="contacto">
-    <div class="container">
-        <div class="sec-head reveal">
-            <span class="sec-eyebrow">Contacto</span>
-            <h2>Hablemos de tu comercio</h2>
-            <p>Contanos tu rubro y te mostramos cómo funciona GC.</p>
-        </div>
-
-        <div class="contact-grid">
-            <form class="form reveal" id="contactForm" novalidate>
-                <div class="form-row">
-                    <div class="field">
-                        <label for="f-nombre">Nombre</label>
-                        <input id="f-nombre" name="nombre" type="text" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="field">
-                        <label for="f-comercio">Comercio</label>
-                        <input id="f-comercio" name="comercio" type="text" placeholder="Nombre de tu comercio">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="field">
-                        <label for="f-rubro">Rubro</label>
-                        <input id="f-rubro" name="rubro" type="text" placeholder="Ej.: kiosco, ferretería, taller…">
-                    </div>
-                    <div class="field">
-                        <label for="f-modelo">Modelo de interés</label>
-                        <select id="f-modelo" name="modelo">
-                            <option value="">Elegí un modelo</option>
-                            <option>GC Comercios</option>
-                            <option>GC Ventas y Servicio Técnico</option>
-                            <option>GC Solo Interfaz</option>
-                            <option>App GC Móvil</option>
-                            <option>No estoy seguro / necesito asesoramiento</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="field">
-                    <label for="f-mensaje">Mensaje</label>
-                    <textarea id="f-mensaje" name="mensaje" placeholder="Contanos qué necesitás…"></textarea>
-                </div>
-                <button type="submit" class="btn btn--dorado" style="justify-self:start;">
-                    Enviar consulta
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                </button>
-                <p class="form-note" id="formNote">Al enviar se abre tu aplicación de mensajería o correo con la consulta preparada.</p>
-            </form>
-
-            <div class="contact-side reveal">
-                <div class="contact-card">
-                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5c-1.5 0-2.9-.4-4.1-1L3 21l1.9-4.7A8.5 8.5 0 1121 11.5z"/></svg></div>
-                    <div>
-                        <h4>WhatsApp</h4>
-                        <p><a href="#" id="wa-link">+54 9 3764 144012</a></p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
-                    <div>
-                        <h4>Correo</h4>
-                        <p><a href="#" id="mail-link">brooposadas@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-                    <div>
-                        <h4>Zona de atención</h4>
-                        <p id="zona-valor">Todo Misiones, Argentina</p>
-                        <p style="font-size:.84rem;">Equipo distribuido en todo el país: asistencia remota y presencial.</p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></div>
-                    <div>
-                        <h4>Seguinos</h4>
-                        <div class="social-row" id="socialRow"></div>
-                    </div>
-                </div>
-            </div>
+        <div class="cta-band reveal">
+            <h3>¿Listo para dar el paso?</h3>
+            <p>Conocé los precios de lanzamiento y elegí el plan que se adapte a tu negocio.</p>
+            <a href="planes.html" class="btn btn--dorado">Ver planes y precios</a>
         </div>
     </div>
 </section>
@@ -1157,21 +339,29 @@
             <div class="footer-links">
                 <h4>Producto</h4>
                 <ul>
-                    <li><a href="#soluciones">Soluciones</a></li>
-                    <li><a href="#rubros">Rubros</a></li>
-                    <li><a href="#seguridad">Seguridad</a></li>
-                    <li><a href="#tecnologia">Tecnología</a></li>
-                    <li><a href="#comparativa">Comparativa</a></li>
-                    <li><a href="#como-funciona">Cómo funciona</a></li>
-                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="index.html#soluciones">Soluciones</a></li>
+                    <li><a href="index.html#rubros">Rubros</a></li>
+                    <li><a href="seguridad.html">Seguridad</a></li>
+                    <li><a href="seguridad.html#tecnologia">Tecnología</a></li>
+                    <li><a href="index.html#comparativa">Comparativa</a></li>
+                    <li><a href="seguridad.html#como-funciona">Cómo funciona</a></li>
+                    <li><a href="seguridad.html#galeria">Galería</a></li>
                 </ul>
             </div>
             <div class="footer-links">
                 <h4>Contacto</h4>
                 <ul>
-                    <li><a href="#contacto">Hablar con ìDOC</a></li>
-                    <li><a href="#planes">Planes</a></li>
-                    <li><a href="#faq">Preguntas frecuentes</a></li>
+                    <li><a href="planes.html#contacto">Hablar con ìDOC</a></li>
+                    <li><a href="planes.html">Planes</a></li>
+                    <li><a href="planes.html#faq">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="legal.html">Aviso legal</a></li>
+                    <li><a href="legal.html#privacidad">Privacidad</a></li>
+                    <li><a href="legal.html#terminos">Términos</a></li>
                 </ul>
             </div>
         </div>
@@ -1190,135 +380,6 @@
 <!-- Volver arriba -->
 <button class="to-top" id="toTop" aria-label="Volver arriba">↑</button>
 
-<script>
-    /* ── Datos comerciales ─────────────────────────────────────── */
-    const WHATSAPP = "5493764144012";            // wa.me usa 549 + número
-    const WHATSAPP_LABEL = "+54 9 3764 144012"; // texto visible
-    const EMAIL = "brooposadas@gmail.com";
-    const CIUDAD = "Todo Misiones, Argentina";
-    const SOCIAL = [
-        { name: 'Facebook',  url: 'https://www.facebook.com/share/1bE9HE62eN/' },
-        { name: 'Instagram', url: 'https://www.instagram.com/rs.misiones' },
-        { name: 'TikTok',    url: 'https://www.tiktok.com/@rsmisiones' }
-    ];
-
-    /* Iconos SVG de redes sociales */
-    const ICONS = {
-        Facebook:  '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5h1.3V4.9c-.2 0-1-.1-1.9-.1-1.9 0-3.2 1.2-3.2 3.3V11H9v3h2.3v7h2.2z"/></svg>',
-        Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>',
-        TikTok:    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 4v2.6c-1.3 0-2.5-.4-3.5-1.1v5.7c0 3.4-2.4 5.8-5.6 5.8-2.8 0-5-2-5-4.9 0-3.2 2.5-5.4 5.7-5.2v2.7c-.4-.1-.8-.2-1.2-.2-1.5 0-2.5 1-2.5 2.5 0 1.4 1 2.4 2.5 2.4 1.5 0 2.6-1.1 2.6-2.8V3h4z"/></svg>'
-    };
-
-    function renderSocial(containerId) {
-        const box = document.getElementById(containerId);
-        if (!box) return;
-        box.innerHTML = SOCIAL.map(s => {
-            const icon = ICONS[s.name] || '';
-            if (!s.url) {
-                return '<span class="social-link" title="' + s.name + ' (completar URL)" aria-label="' + s.name + '">' + icon + '</span>';
-            }
-            return '<a class="social-link" href="' + s.url + '" target="_blank" rel="noopener" aria-label="' + s.name + '" title="' + s.name + '">' + icon + '</a>';
-        }).join('');
-    }
-
-    /* Rellenar los datos de contacto */
-    function initContact() {
-        const wa = document.getElementById('wa-link');
-        const mail = document.getElementById('mail-link');
-        const zona = document.getElementById('zona-valor');
-        if (wa) { wa.textContent = WHATSAPP_LABEL; wa.href = 'https://wa.me/' + WHATSAPP; }
-        if (mail) { mail.textContent = EMAIL; mail.href = 'mailto:' + EMAIL; }
-        if (zona && CIUDAD) zona.textContent = CIUDAD;
-        const waFloat = document.getElementById('waFloat');
-        if (waFloat) waFloat.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Hola ìDOC 👋 Quiero información sobre GC');
-        renderSocial('socialRow');
-        renderSocial('socialRowFooter');
-    }
-    initContact();
-
-    /* ── Menú móvil ─────────────────────────────────────────────── */
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    burger.addEventListener('click', () => {
-        const open = mobileMenu.classList.toggle('open');
-        burger.textContent = open ? '✕' : '☰';
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        burger.textContent = '☰';
-    }));
-
-    /* ── Header con sombra al hacer scroll ──────────────────────── */
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 30);
-    });
-
-    /* ── Botón volver arriba ────────────────────────────────────── */
-    const toTop = document.getElementById('toTop');
-    if (toTop) {
-        toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        window.addEventListener('scroll', () => toTop.classList.toggle('show', window.scrollY > 600));
-    }
-
-    /* ── Smooth scroll (respetando header fijo) ─────────────────── */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function (e) {
-            const id = this.getAttribute('href');
-            if (id.length < 2) return;
-            const target = document.querySelector(id);
-            if (!target) return;
-            e.preventDefault();
-            const y = target.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-        });
-    });
-
-    /* ── Animaciones de aparición ───────────────────────────────── */
-    const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                io.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    /* ── Formulario: compone WhatsApp o mailto ──────────────────── */
-    const form = document.getElementById('contactForm');
-    const note = document.getElementById('formNote');
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const nombre = document.getElementById('f-nombre').value.trim();
-        if (!nombre) {
-            document.getElementById('f-nombre').focus();
-            note.textContent = 'Por favor, escribí tu nombre para continuar.';
-            return;
-        }
-        const comercio = document.getElementById('f-comercio').value.trim();
-        const rubro = document.getElementById('f-rubro').value.trim();
-        const modelo = document.getElementById('f-modelo').value;
-        const mensaje = document.getElementById('f-mensaje').value.trim();
-
-        const texto = [
-            'Hola ìDOC 👋',
-            'Nombre: ' + nombre,
-            comercio ? 'Comercio: ' + comercio : '',
-            rubro ? 'Rubro: ' + rubro : '',
-            modelo ? 'Modelo de interés: ' + modelo : '',
-            mensaje ? 'Mensaje: ' + mensaje : ''
-        ].filter(Boolean).join('\n');
-
-        if (WHATSAPP) {
-            window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank');
-        } else if (EMAIL) {
-            window.location.href = 'mailto:' + EMAIL + '?subject=' +
-                encodeURIComponent('Consulta GC · ' + nombre) + '&body=' + encodeURIComponent(texto);
-        } else {
-            note.textContent = 'Los datos de contacto aún no están configurados. Completalos en el bloque CONFIGURACIÓN del archivo index.html.';
-        }
-    });
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
