@@ -462,3 +462,14 @@
     border: 1px solid rgba(255,177,0,.25); }
 .cta-band h3 { font-size: 1.7rem; margin-bottom: 10px; }
 .cta-band p { color: var(--texto-mut); margin-bottom: 24px; }
+
+
+/* Marca ìDOC: panel y artes originales */
+.brand-panel { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.brand-panel .shot img { width: 100%; height: auto; display: block; }
+.brand-arts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.brand-arts .shot img { width: 100%; height: auto; display: block; }
+@media (max-width: 768px) {
+  .brand-panel { grid-template-columns: repeat(2, 1fr); }
+  .brand-arts { grid-template-columns: 1fr; }
+}
