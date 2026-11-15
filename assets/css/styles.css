@@ -473,3 +473,15 @@
   .brand-panel { grid-template-columns: repeat(2, 1fr); }
   .brand-arts { grid-template-columns: 1fr; }
 }
+
+
+/* Servicios ìDOC */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.service-card { background: var(--card); border: 1px solid var(--borde); border-radius: 14px; padding: 26px 22px; transition: var(--trans); }
+.service-card:hover { border-color: var(--borde-dorado); transform: translateY(-4px); }
+.service-card .ico { font-size: 1.8rem; margin-bottom: 12px; line-height: 1; }
+.service-card h3 { color: var(--dorado); font-size: 1.1rem; margin-bottom: 8px; }
+.service-card p { color: var(--texto-mut); font-size: .9rem; }
+.service-link { display: inline-block; margin-top: 12px; color: var(--dorado); font-weight: 600; font-size: .88rem; }
+.service-link:hover { text-decoration: underline; }
+@media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
